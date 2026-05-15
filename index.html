@@ -24,7 +24,7 @@
             background-size: 20px 20px; 
         }
 
-        /* --- Navigasi Samping (Mobile Friendly) --- */
+        /* --- Navigasi Samping --- */
         .sidebar {
             position: fixed; left: 15px; top: 50%;
             transform: translateY(-50%);
@@ -54,11 +54,11 @@
                 padding: 10px 15px;
                 border-radius: 40px;
                 box-shadow: 0 4px 15px rgba(244, 114, 182, 0.3);
-                gap: 8px;
+                gap: 10px;
             }
-            .side-btn { width: 42px; height: 42px; font-size: 16px; }
-            .glass-card { margin-bottom: 100px !important; padding: 25px !important; }
-            h1 { font-size: 26px !important; }
+            .side-btn { width: 45px; height: 45px; font-size: 18px; }
+            .glass-card { margin-bottom: 90px !important; padding: 30px !important; }
+            h1 { font-size: 28px !important; }
         }
 
         /* --- Kontainer Utama --- */
@@ -72,240 +72,393 @@
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
             padding: 40px; border-radius: 30px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05), border: 1px solid rgba(255,255,255,0.5);
             max-width: 450px; width: 100%; position: relative;
         }
 
-        h1 { font-family: 'Pacifico', cursive; color: var(--accent); margin-bottom: 5px; font-size: 32px; }
+        h1 { font-family: 'Pacifico', cursive; color: var(--accent); margin-bottom: 5px; font-size: 32px; text-shadow: 2px 2px 4px rgba(244, 114, 182, 0.2); }
+        #teks-instruksi { font-size: 16px; margin-bottom: 30px; color: #6b7280; font-weight: 600;}
 
         /* --- Tombol Aksi --- */
         .btn-group { display: flex; gap: 15px; justify-content: center; margin-top: 10px; }
         .action-btn {
             background: var(--accent); color: white; border: none; padding: 12px 28px;
             border-radius: 25px; cursor: pointer; font-family: 'Quicksand', sans-serif; font-weight: 700;
-            font-size: 16px; transition: 0.3s ease;
+            font-size: 16px; transition: all 0.3s ease; box-shadow: 0 8px 20px rgba(244, 114, 182, 0.3);
         }
+        .action-btn:hover { background: #ec4899; transform: translateY(-3px); box-shadow: 0 10px 25px rgba(236, 72, 153, 0.4); }
+        .action-btn.relight { background: #fbbf24; box-shadow: 0 8px 20px rgba(251, 191, 36, 0.3); color: #78350f; } 
+        .action-btn.relight:hover { background: #f59e0b; transform: translateY(-3px); }
 
-        /* --- KUE ULANG TAHUN --- */
-        .cake-container { position: relative; margin: 70px 0 40px 0; display: flex; justify-content: center; z-index: 10; }
-        .plate { position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); width: 200px; height: 45px; background: #ffffff; border-radius: 50%; box-shadow: 0 10px 20px rgba(0,0,0,0.05); z-index: -1; }
-        .cake { width: 160px; height: 100px; background: #fff4e6; border-radius: 15px 15px 10px 10px; position: relative; }
-        .icing { position: absolute; top: 0; left: 0; width: 100%; height: 40px; background: #ffb8c6; border-radius: 15px 15px 0 0; }
-        .candle-body { width: 12px; height: 45px; background: repeating-linear-gradient(-45deg, #ffffff, #ffffff 5px, #ff9ff3 5px, #ff9ff3 10px); border-radius: 4px; position: absolute; left: 50%; transform: translateX(-50%); top: -45px; }
-        .flame { width: 16px; height: 26px; background-color: var(--flame-inner); border-radius: 50% 50% 20% 20%; position: absolute; top: -75px; left: 50%; transform: translateX(-50%); box-shadow: 0 0 15px var(--flame-inner); animation: flicker 0.3s infinite alternate; }
-        @keyframes flicker { 0% { transform: translateX(-50%) rotate(-2deg); } 100% { transform: translateX(-50%) rotate(2deg) scale(1.1); } }
+        /* --- KUE ULANG TAHUN ESTETIK --- */
+        .cake-container { position: relative; margin: 80px 0 50px 0; display: flex; justify-content: center; z-index: 10; }
+        .plate { position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); width: 220px; height: 50px; background: #ffffff; border-radius: 50%; box-shadow: 0 15px 20px rgba(0,0,0,0.06), inset 0 -5px 10px rgba(0,0,0,0.02); z-index: -1; }
+        .cake { width: 170px; height: 110px; background: #fff4e6; border-radius: 15px 15px 10px 10px; position: relative; box-shadow: inset -10px -10px 20px rgba(0,0,0,0.03), 0 8px 15px rgba(0,0,0,0.05); }
+        .icing { position: absolute; top: 0; left: 0; width: 100%; height: 45px; background: #ffb8c6; border-radius: 15px 15px 0 0; }
+        .drip { position: absolute; background: #ffb8c6; border-radius: 0 0 20px 20px; box-shadow: 2px 2px 5px rgba(0,0,0,0.02); }
+        .d1 { width: 30px; height: 25px; left: 5px; top: 40px; } .d2 { width: 35px; height: 45px; left: 30px; top: 40px; } .d3 { width: 30px; height: 15px; left: 60px; top: 40px; } .d4 { width: 45px; height: 35px; left: 85px; top: 40px; } .d5 { width: 30px; height: 20px; left: 125px; top: 40px; } .d6 { width: 15px; height: 10px; left: 150px; top: 40px; border-radius: 0 0 10px 10px;}
+        .candle-wrapper { position: absolute; top: -65px; left: 50%; transform: translateX(-50%); width: 20px; z-index: 5; }
+        .candle-body { width: 14px; height: 55px; background: repeating-linear-gradient(-45deg, #ffffff, #ffffff 6px, #ff9ff3 6px, #ff9ff3 12px); border-radius: 6px; position: absolute; left: 3px; box-shadow: 2px 2px 5px rgba(0,0,0,0.08); border: 1px solid rgba(255,255,255,0.8); }
+        .wick { width: 3px; height: 12px; background: #555; position: absolute; top: -10px; left: 8.5px; border-radius: 2px; }
+        .flame { width: 18px; height: 30px; background-color: var(--flame-inner); border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%; position: absolute; top: -38px; left: 1px; box-shadow: 0 0 15px var(--flame-inner), 0 0 25px var(--flame-outer), 0 0 45px var(--flame-outer); transform-origin: bottom center; animation: flicker 0.3s ease-in-out infinite alternate; }
+        .flame::after { content: ''; width: 8px; height: 18px; background: rgba(255, 255, 255, 0.9); border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%; position: absolute; bottom: 3px; left: 5px; }
+        @keyframes flicker { 0% { transform: rotate(-2deg) scaleY(1.0); opacity: 0.9; } 25% { transform: rotate(1deg) scaleY(1.05); opacity: 1; } 50% { transform: rotate(-1deg) scaleY(0.95); opacity: 0.95; } 75% { transform: rotate(2deg) scaleY(1.02); opacity: 1; } 100% { transform: rotate(-1deg) scaleY(1.0); opacity: 0.9; } }
 
-        /* --- MUSIC PLAYER --- */
+        /* --- MUSIC PLAYER ESTETIK --- */
         .music-player-card { background: rgba(255, 182, 193, 0.2); border-radius: 20px; padding: 25px; margin-top: 20px; border: 1px solid rgba(244, 114, 182, 0.3); }
-        .play-btn-large { background: var(--accent); color: white; border: none; width: 60px; height: 60px; border-radius: 50%; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; margin: 0 auto; }
+        .track-title { font-size: 18px; font-weight: 700; color: var(--accent); margin-bottom: 5px; }
+        .track-artist { font-size: 14px; color: #6b7280; margin-bottom: 20px; }
+        .play-btn-large { background: var(--accent); color: white; border: none; width: 65px; height: 65px; border-radius: 50%; font-size: 24px; cursor: pointer; box-shadow: 0 4px 15px rgba(244, 114, 182, 0.4); display: flex; align-items: center; justify-content: center; margin: 0 auto; transition: 0.3s; }
+        .play-btn-large:hover { transform: scale(1.1); background: #ec4899; }
         .progress-container { width: 100%; height: 8px; background: #ffe4e1; border-radius: 5px; margin: 20px 0 10px 0; overflow: hidden; cursor: pointer; }
-        .progress-bar-fill { height: 100%; width: 0%; background: var(--accent); transition: width 0.1s linear; }
+        .progress-bar-fill { height: 100%; width: 0%; background: var(--accent); border-radius: 5px; transition: width 0.1s linear; pointer-events: none; }
+        .time-info { display: flex; justify-content: space-between; font-size: 12px; color: #9ca3af; font-weight: 600; pointer-events: none; }
 
-        /* --- GALLERY VIEWER --- */
+        /* --- GALLERY VIEWER ESTETIK --- */
         .gallery-container { position: relative; margin-top: 20px; }
-        .gallery-count { position: absolute; top: -15px; right: 5px; background: var(--accent); color: white; padding: 4px 12px; border-radius: 15px; font-weight: bold; font-size: 12px; z-index: 10; }
-        .polaroid { background: white; padding: 12px 12px 20px 12px; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.08); transform: rotate(-2deg); margin: 0 auto 15px; max-width: 250px; }
-        .polaroid img { width: 100%; height: 210px; object-fit: cover; border-radius: 5px; }
-        .polaroid-text { font-weight: 600; color: #4b5563; margin-top: 12px; font-size: 14px; }
-        #video-display { background: black; padding: 8px; border-radius: 15px; margin-bottom: 15px; }
-        #video-display video { border-radius: 8px; width: 100%; max-height: 240px; }
+        .gallery-count {
+            position: absolute; top: -15px; right: 10px; background: var(--accent); color: white; 
+            padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 14px; 
+            box-shadow: 0 4px 10px rgba(244, 114, 182, 0.3); z-index: 10;
+        }
+        
+        /* Box Foto */
+        .polaroid {
+            background: white; padding: 15px 15px 25px 15px; border-radius: 12px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08); transform: rotate(-2deg); 
+            transition: 0.3s ease; margin: 0 auto 20px; max-width: 260px;
+        }
+        .polaroid:hover { transform: rotate(0deg) scale(1.02); box-shadow: 0 15px 30px rgba(0,0,0,0.12); }
+        .polaroid img { width: 100%; height: 220px; object-fit: cover; border-radius: 8px; border: 1px solid #f3f4f6; }
+        .polaroid-text { font-family: 'Quicksand', sans-serif; font-weight: 600; color: #4b5563; margin-top: 15px; font-size: 15px; }
+        
+        /* Box Video */
+        #video-display { background: black; padding: 10px; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        #video-display video { border-radius: 8px; width: 100%; max-height: 250px; }
+        #video-text { font-family: 'Quicksand', sans-serif; font-weight: 600; color: white; margin-top: 10px; font-size: 15px; }
 
-        /* Tombol Galeri */
-        .gallery-controls { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-        .gallery-btn { background: white; color: var(--accent); border: 1px solid var(--accent); padding: 7px 12px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 12px; }
+        /* Tombol Bawah Galeri */
+        .gallery-controls { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+        .gallery-btn { 
+            background: white; color: var(--accent); border: 2px solid var(--accent); 
+            padding: 8px 15px; border-radius: 20px; font-weight: bold; cursor: pointer; 
+            transition: 0.3s; font-size: 13px; font-family: 'Quicksand'; box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .gallery-btn:hover { background: var(--accent); color: white; transform: translateY(-2px); }
 
+        /* --- Transisi --- */
         .hidden { display: none !important; }
         .fade-in { animation: fadeIn 0.8s ease-out forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Fitur Cetak */
+        /* =========================================
+           KODE KHUSUS UNTUK FITUR CETAK (PRINT)
+           ========================================= */
         @media print {
+            /* Sembunyikan semua elemen di layar saat cetak */
             body * { visibility: hidden; }
+            
+            /* Sembunyikan background dan atur ulang layout */
+            body, html { background: white !important; margin: 0; padding: 0; }
+            .sidebar, .gallery-controls, .gallery-count, #video-display, audio { display: none !important; }
+
+            /* Tampilkan HANYA kotak polaroid dan isinya */
             #gallery-display-polaroid, #gallery-display-polaroid * { visibility: visible; }
-            #gallery-display-polaroid { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) !important; width: 300px; }
+            
+            /* Atur posisi polaroid biar pas di tengah kertas cetak */
+            #gallery-display-polaroid {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%) !important; /* Lurusin foto, hilangkan efek miring */
+                width: 300px;
+                box-shadow: none !important; /* Hilangkan bayangan biar irit tinta */
+                border: 1px solid #ddd;
+            }
         }
     </style>
 </head>
 <body>
 
     <audio id="bg-music" loop>
-        <source src="play-ini-yaaa.mp3" type="audio/mpeg">
+        <source src="play ini yaaa.mp3" type="audio/mpeg">
     </audio>
 
     <div class="sidebar">
-        <button class="side-btn" onclick="showSection('message')">💌</button>
-        <button class="side-btn" onclick="showSection('music')">🎵</button>
-        <button class="side-btn" onclick="showSection('cake')">🎂</button>
-        <button class="side-btn" onclick="showSection('gallery')">📸</button>
-        <button class="side-btn" onclick="showSection('wish')">🌟</button>
+        <button class="side-btn" onclick="showSection('message')" title="Pesan">💌</button>
+        <button class="side-btn" onclick="showSection('music')" title="Pemutar Musik">🎵</button>
+        <button class="side-btn" onclick="showSection('cake')" title="Kue Ulang Tahun">🎂</button>
+        <button class="side-btn" onclick="showSection('gallery')" title="Galeri Viewer">📸</button>
+        <button class="side-btn" onclick="showSection('wish')" title="Harapan">🌟</button>
     </div>
 
     <div class="main-content">
-        <div class="glass-card fade-in">
-            <div id="section-msg">
-                <h1>Happy Birthday! ✨</h1>
-                <p>Cuma mau bilang, makasih ya udah lahir ke dunia ini dan jadi bagian terbaik dari hidupku. ❤️</p>
-                <p style="color: var(--accent); font-weight: bold; margin-top: 20px;">Cek navigasi di bawah/samping ya!</p>
+        <div class="glass-card fade-in" id="main-card">
+            
+            <div id="section-msg" class="fade-in">
+                <h1 style="font-size: 38px;">Happy Birthday! ✨</h1>
+                <h2 style="font-family: 'Quicksand'; color: var(--text-color); font-size: 20px; margin-top: 0;">Pesan Spesial Buat Kamu 💌</h2>
+                <p style="line-height: 1.6; font-size: 16px; margin-top: 20px;">
+                    Cuma mau bilang, makasih ya udah lahir ke dunia ini dan jadi bagian terbaik dari hidupku. You mean the world to me! ❤️
+                </p>
+                <p style="color: var(--accent); font-weight: bold; margin-top: 30px; font-size: 14px;">
+                    Psst.. Coba buka satu-satu menu di samping kiri ya!
+                </p>
             </div>
 
-            <div id="section-music" class="hidden">
-                <h2 style="font-family: 'Pacifico'; color: var(--accent);">Our Soundtrack 🎧</h2>
+            <div id="section-music" class="hidden fade-in">
+                <h2 style="font-family: 'Pacifico'; color: var(--accent); font-size: 28px; margin-top: 0;">Our Soundtrack 🎧</h2>
                 <div class="music-player-card">
+                    <div class="track-title">Lagu Spesial Buat Kita</div>
+                    <div class="track-artist">Dengerin ya sayang ✨</div>
                     <button class="play-btn-large" id="play-btn-ui" onclick="toggleMusic()">▶</button>
                     <div class="progress-container" id="progress-container" onclick="seekMusic(event)">
                         <div class="progress-bar-fill" id="music-progress"></div>
                     </div>
-                    <div style="display: flex; justify-content: space-between; font-size: 12px; color: #9ca3af;">
-                        <span id="current-time">0:00</span><span>Play Me!</span>
+                    <div class="time-info">
+                        <span id="current-time">0:00</span>
+                        <span>Full Track</span>
                     </div>
                 </div>
             </div>
 
             <div id="section-cake" class="hidden">
-                <h2 style="font-family: 'Pacifico'; color: var(--accent);">Make a Wish! 🎂</h2>
+                <h2 style="font-family: 'Pacifico'; color: var(--accent); font-size: 28px; margin-top: 0;">Make a Wish! 🎂</h2>
                 <div class="cake-container">
                     <div class="plate"></div>
                     <div class="cake">
                         <div class="icing"></div>
-                        <div class="candle-body"></div>
-                        <div class="flame" id="lilin-api"></div>
+                        <div class="drip d1"></div> <div class="drip d2"></div> <div class="drip d3"></div>
+                        <div class="drip d4"></div> <div class="drip d5"></div> <div class="drip d6"></div>
+                        <div class="candle-wrapper">
+                            <div class="wick"></div><div class="candle-body"></div><div class="flame" id="lilin-api"></div>
+                        </div>
                     </div>
                 </div>
-                <p id="teks-instruksi">Tiup lilinnya ya sayang!</p>
+                <p id="teks-instruksi">Ada kejutan kecil buat kamu. <br>Coba tiup lilinnya ya!</p>
                 <div class="btn-group">
                     <button class="action-btn" id="btn-tiup" onclick="tiupLilin()">Tiup Lilin 💨</button>
-                    <button class="action-btn hidden" id="btn-nyala" onclick="nyalainLilin()" style="background: #fbbf24;">Nyalain 🔥</button>
+                    <button class="action-btn relight hidden" id="btn-nyala" onclick="nyalainLilin()">Nyalain Lagi 🔥</button>
                 </div>
-                <div id="after-blow" class="hidden" style="margin-top: 15px; color: var(--accent); font-weight: bold;">Yeay! I Love You! ❤️</div>
             </div>
 
-            <div id="section-gal" class="hidden">
-                <h2 style="font-family: 'Pacifico'; color: var(--accent);">Memories 📸</h2>
+            <div id="section-after-blow" class="hidden fade-in" style="margin-top: 10px;">
+                <h2 style="color: var(--accent); font-family: 'Pacifico', cursive; font-size: 28px;">Yeay! HBD Sayang! 🎉</h2>
+                <p style="line-height: 1.6; font-size: 15px;">Selamat ulang tahun ya! Semoga hari-harimu selalu seindah kue ini, makin dewasa, bahagia terus sama aku. I Love You so much! ❤️</p>
+            </div>
+
+            <div id="section-gal" class="hidden fade-in">
+                <h2 style="font-family: 'Pacifico'; color: var(--accent); margin-top: 0;">Our Memories 📸</h2>
+                
                 <div class="gallery-container">
-                    <div class="gallery-count" id="photo-count">1/20</div>
+                    <div class="gallery-count" id="photo-count">1/4</div>
+
                     <div class="polaroid" id="gallery-display-polaroid">
-                        <img src="" id="current-photo-img">
+                        <img src="" id="current-photo-img" alt="Memory">
                         <div class="polaroid-text" id="current-photo-text">Memuat...</div>
                     </div>
+
                     <div id="video-display" class="hidden">
-                        <video id="gallery-video" controls><source src="" type="video/mp4"></video>
-                        <div id="video-text" style="color: white; margin-top: 5px;">Video Momen Kita</div>
+                        <video id="gallery-video" controls>
+                            <source src="" type="video/mp4">
+                        </video>
+                        <div id="video-text">Video text</div>
                     </div>
+
                     <div class="gallery-controls">
-                        <button class="gallery-btn" onclick="changeSlide(-1)">&lt;</button>
-                        <button class="gallery-btn" onclick="changeSlide(1)">&gt;</button>
-                        <button class="gallery-btn" id="btn-toggle-media" onclick="toggleMedia()" style="color: #3b82f6;">Lihat Video</button>
-                        <button class="gallery-btn" onclick="window.print()">Cetak</button>
+                        <button class="gallery-btn" onclick="changeSlide(-1)">&lt; Sebelumnya</button>
+                        <button class="gallery-btn" onclick="changeSlide(1)">Berikutnya &gt;</button>
+                        <button class="gallery-btn" id="btn-toggle-media" onclick="toggleMedia()" style="border-color: #3b82f6; color: #3b82f6;">Lihat Video</button>
+                        <button class="gallery-btn" onclick="printPhoto()">Cetak</button>
                     </div>
                 </div>
             </div>
-
-            <div id="section-wish" class="hidden">
+            
+            <div id="section-wish" class="hidden fade-in">
                 <h2 style="font-family: 'Pacifico'; color: var(--accent);">My Wish 🌟</h2>
-                <p>Semoga kita langgeng terus sampai nanti! 💍</p>
+                <p>Semoga kita bisa merayakan ulang tahun kamu yang berikutnya, dan berikutnya lagi sama-sama. 💍</p>
             </div>
         </div>
     </div>
 
     <script>
-        // --- MUSIK ---
+        // ==========================================
+        // 1. LOGIKA PEMUTAR MUSIK
+        // ==========================================
         const audio = document.getElementById("bg-music");
+        const playBtnUI = document.getElementById("play-btn-ui");
+        const progressFill = document.getElementById("music-progress");
+        const currentTimeText = document.getElementById("current-time");
+        let isPlaying = false;
+
         function toggleMusic() {
-            if (audio.paused) { audio.play(); document.getElementById("play-btn-ui").innerHTML = "⏸"; } 
-            else { audio.pause(); document.getElementById("play-btn-ui").innerHTML = "▶"; }
-        }
-        audio.addEventListener('timeupdate', () => {
-            const fill = document.getElementById("music-progress");
-            fill.style.width = (audio.currentTime / audio.duration * 100) + "%";
-            let mins = Math.floor(audio.currentTime / 60);
-            let secs = Math.floor(audio.currentTime % 60);
-            document.getElementById("current-time").innerHTML = mins + ":" + (secs < 10 ? "0"+secs : secs);
-        });
-        function seekMusic(e) {
-            const rect = document.getElementById("progress-container").getBoundingClientRect();
-            audio.currentTime = ((e.clientX - rect.left) / rect.width) * audio.duration;
+            if (isPlaying) { audio.pause(); playBtnUI.innerHTML = "▶"; isPlaying = false; } 
+            else { audio.play(); playBtnUI.innerHTML = "⏸"; isPlaying = true; }
         }
 
-        // --- KUE ---
+        audio.addEventListener('timeupdate', () => {
+            if(audio.duration) {
+                const progressPercent = (audio.currentTime / audio.duration) * 100;
+                progressFill.style.width = progressPercent + "%";
+                let currentMins = Math.floor(audio.currentTime / 60);
+                let currentSecs = Math.floor(audio.currentTime - currentMins * 60);
+                if(currentSecs < 10) { currentSecs = "0" + currentSecs; }
+                currentTimeText.innerHTML = currentMins + ":" + currentSecs;
+            }
+        });
+
+        function seekMusic(event) {
+            const container = document.getElementById("progress-container");
+            const width = container.clientWidth;
+            const clickX = event.offsetX;
+            audio.currentTime = (clickX / width) * audio.duration;
+        }
+
+        // ==========================================
+        // 2. LOGIKA KUE
+        // ==========================================
         function tiupLilin() {
             document.getElementById('lilin-api').classList.add('hidden');
             document.getElementById('btn-tiup').classList.add('hidden');
             document.getElementById('btn-nyala').classList.remove('hidden');
-            document.getElementById('after-blow').classList.remove('hidden');
-        }
-        function nyalainLilin() {
-            document.getElementById('lilin-api').classList.remove('hidden');
-            document.getElementById('btn-tiup').classList.remove('hidden');
-            document.getElementById('btn-nyala').classList.add('hidden');
-            document.getElementById('after-blow').classList.add('hidden');
+            document.getElementById('teks-instruksi').innerHTML = "Yeeay! Semoga doanya terkabul! 💖";
+            document.getElementById('section-after-blow').classList.remove('hidden');
         }
 
-        // --- GALLERY (19 Foto + 1 Video) ---
+        function nyalainLilin() {
+            document.getElementById('lilin-api').classList.remove('hidden');
+            document.getElementById('btn-nyala').classList.add('hidden');
+            document.getElementById('btn-tiup').classList.remove('hidden');
+            document.getElementById('teks-instruksi').innerHTML = "Ada kejutan kecil buat kamu. <br>Coba tiup lilinnya ya!";
+            document.getElementById('section-after-blow').classList.add('hidden');
+        }
+
+        // ==========================================
+        // 3. LOGIKA GALLERY (Foto, Video & Cetak)
+        // ==========================================
+        
+        // Bub isi datanya di sini ya! 
         const galleryData = [
-            { type: "image", file: "foto1.jpeg", text: "Momen 1 ❤️" },
-            { type: "image", file: "foto2.jpeg", text: "Momen 2 ✨" },
-            { type: "image", file: "foto3.jpeg", text: "Momen 3 📸" },
-            { type: "image", file: "foto4.jpeg", text: "Momen 4 🌟" },
-            { type: "image", file: "foto5.jpeg", text: "Momen 5 🥰" },
-            { type: "image", file: "foto6.jpeg", text: "Momen 6 🍭" },
-            { type: "image", file: "foto7.jpeg", text: "Momen 7 🌸" },
-            { type: "image", file: "foto8.jpeg", text: "Momen 8 🎈" },
-            { type: "image", file: "foto9.jpeg", text: "Momen 9 🍦" },
-            { type: "image", file: "foto10.jpeg", text: "Momen 10 🎀" },
-            { type: "image", file: "foto11.jpeg", text: "Momen 11 🧸" },
-            { type: "image", file: "foto12.jpeg", text: "Momen 12 🌻" },
-            { type: "image", file: "foto13.jpeg", text: "Momen 13 🌙" },
-            { type: "image", file: "foto14.jpeg", text: "Momen 14 ☁️" },
-            { type: "image", file: "foto15.jpeg", text: "Momen 15 🌊" },
-            { type: "image", file: "foto16.jpeg", text: "Momen 16 🎨" },
-            { type: "image", file: "foto17.jpeg", text: "Momen 17 🥂" },
-            { type: "image", file: "foto18.jpeg", text: "Momen 18 💎" },
-            { type: "image", file: "foto19.jpeg", text: "Momen 19 💖" },
-            { type: "video", file: "video1.mp4", text: "Video Penutup Kita 🎥" }
+            { type: "image", file: "foto1.jpg", text: "Momen kita ke-1 ❤️" },
+            { type: "image", file: "foto2.jpg", text: "Senyum paling manis!" },
+            { type: "image", file: "foto3.jpg", text: "Suka banget foto ini ✨" },
+            { type: "image", file: "foto1.jpg", text: "Momen kita ke-1 ❤️" },
+            { type: "image", file: "foto2.jpg", text: "Senyum paling manis!" },
+            { type: "image", file: "foto3.jpg", text: "Suka banget foto ini ✨" },
+            { type: "image", file: "foto1.jpg", text: "Momen kita ke-1 ❤️" },
+            { type: "image", file: "foto2.jpg", text: "Senyum paling manis!" },
+            { type: "image", file: "foto3.jpg", text: "Suka banget foto ini ✨" },
+            { type: "image", file: "foto1.jpg", text: "Momen kita ke-1 ❤️" },
+            { type: "image", file: "foto2.jpg", text: "Senyum paling manis!" },
+            { type: "image", file: "foto3.jpg", text: "Suka banget foto ini ✨" },
+            { type: "image", file: "foto1.jpg", text: "Momen kita ke-1 ❤️" },
+            { type: "image", file: "foto2.jpg", text: "Senyum paling manis!" },
+            { type: "image", file: "foto3.jpg", text: "Suka banget foto ini ✨" },
+            { type: "image", file: "foto1.jpg", text: "Momen kita ke-1 ❤️" },
+            { type: "image", file: "foto2.jpg", text: "Senyum paling manis!" },
+            { type: "image", file: "foto3.jpg", text: "Suka banget foto ini ✨" },
+            { type: "video", file: "video1.mp4", text: "Video spesial kita 🎥" }
         ];
 
         let currentIndex = 0;
+
         function updateGalleryDisplay() {
-            const item = galleryData[currentIndex];
+            const currentItem = galleryData[currentIndex];
             const polaroid = document.getElementById('gallery-display-polaroid');
-            const videoArea = document.getElementById('video-display');
+            const videoDisplay = document.getElementById('video-display');
+            const videoEl = document.getElementById('gallery-video');
             const toggleBtn = document.getElementById('btn-toggle-media');
             
             document.getElementById('photo-count').innerHTML = (currentIndex + 1) + "/" + galleryData.length;
 
-            if (item.type === "image") {
+            if (currentItem.type === "image") {
                 polaroid.classList.remove('hidden');
-                videoArea.classList.add('hidden');
-                document.getElementById('current-photo-img').src = item.file;
-                document.getElementById('current-photo-text').innerHTML = item.text;
+                videoDisplay.classList.add('hidden');
+                
+                document.getElementById('current-photo-img').src = currentItem.file;
+                document.getElementById('current-photo-text').innerHTML = currentItem.text;
+                
+                videoEl.pause(); 
+                
                 toggleBtn.innerHTML = "Lihat Video";
+                toggleBtn.style.borderColor = "#3b82f6";
                 toggleBtn.style.color = "#3b82f6";
-            } else {
+                
+            } else if (currentItem.type === "video") {
                 polaroid.classList.add('hidden');
-                videoArea.classList.remove('hidden');
-                const v = document.getElementById('gallery-video');
-                if(!v.src.endsWith(item.file)) { v.src = item.file; v.load(); }
+                videoDisplay.classList.remove('hidden');
+                
+                if(!videoEl.src.endsWith(currentItem.file)) {
+                    videoEl.src = currentItem.file;
+                    videoEl.load();
+                }
+                document.getElementById('video-text').innerHTML = currentItem.text;
+                
                 toggleBtn.innerHTML = "Lihat Foto";
+                toggleBtn.style.borderColor = "#ec4899"; 
                 toggleBtn.style.color = "#ec4899";
             }
         }
-        function changeSlide(n) {
-            currentIndex = (currentIndex + n + galleryData.length) % galleryData.length;
-            updateGalleryDisplay();
-        }
-        function toggleMedia() {
-            if (galleryData[currentIndex].type === "image") { currentIndex = 19; } 
-            else { currentIndex = 0; }
+
+        function changeSlide(direction) {
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = galleryData.length - 1;
+            if (currentIndex >= galleryData.length) currentIndex = 0;
             updateGalleryDisplay();
         }
 
-        // --- NAVIGASI ---
-        function showSection(id) {
-            ["section-msg", "section-music", "section-cake", "section-gal", "section-wish"].forEach(s => {
-                document.getElementById(s).classList.add('hidden');
-            });
-            document.getElementById('section-' + id).classList.remove('hidden');
-            if(id === 'gal') updateGalleryDisplay();
+        function toggleMedia() {
+            const currentItem = galleryData[currentIndex];
+            if (currentItem.type === "image") {
+                const videoIndex = galleryData.findIndex(item => item.type === "video");
+                if (videoIndex !== -1) {
+                    currentIndex = videoIndex;
+                    updateGalleryDisplay();
+                } else {
+                    alert("Belum ada video yang dimasukin ke kodingan, bub!");
+                }
+            } else {
+                currentIndex = 0;
+                updateGalleryDisplay();
+            }
+        }
+
+        // FUNGSI CETAK FOTO
+        function printPhoto() {
+            const currentItem = galleryData[currentIndex];
+            
+            // Cek kalau user nyoba nge-print video
+            if (currentItem.type === "video") {
+                alert("Video nggak bisa dicetak bub, coba geser ke foto dulu ya! 🎥❌");
+            } else {
+                // Kalau foto, panggil fitur print bawaan browser
+                window.print();
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => { updateGalleryDisplay(); });
+
+        // ==========================================
+        // 4. LOGIKA NAVIGASI MENU
+        // ==========================================
+        function showSection(name) {
+            document.getElementById('section-msg').classList.add('hidden');
+            document.getElementById('section-music').classList.add('hidden');
+            document.getElementById('section-cake').classList.add('hidden');
+            document.getElementById('section-after-blow').classList.add('hidden');
+            document.getElementById('section-gal').classList.add('hidden');
+            document.getElementById('section-wish').classList.add('hidden');
+
+            if(name === 'message') document.getElementById('section-msg').classList.remove('hidden');
+            if(name === 'music') document.getElementById('section-music').classList.remove('hidden');
+            if(name === 'cake') {
+                document.getElementById('section-cake').classList.remove('hidden');
+                if(document.getElementById('btn-tiup').classList.contains('hidden')) {
+                    document.getElementById('section-after-blow').classList.remove('hidden');
+                }
+            }
+            if(name === 'gallery') document.getElementById('section-gal').classList.remove('hidden');
+            if(name === 'wish') document.getElementById('section-wish').classList.remove('hidden');
         }
     </script>
 </body>
