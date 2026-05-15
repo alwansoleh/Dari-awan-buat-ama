@@ -3,272 +3,301 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Sayang! 💖</title>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">
+    <title>Happy Birthday! 💖</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --pink-bg: #fdf2f8; 
-            --accent: #f472b6; 
-            --text-color: #4b5563;
-            --flame-outer: #ff9f43;
-            --flame-inner: #fff200;
-        }
-
         body {
-            margin: 0; padding: 0;
-            font-family: 'Quicksand', sans-serif;
-            background-color: var(--pink-bg);
-            color: var(--text-color);
-            overflow-x: hidden;
-            background-image: radial-gradient(#fbcfe8 1px, transparent 1px);
-            background-size: 20px 20px; 
+            margin: 0;
+            padding: 0;
+            background-color: #000080; /* Classic Win95 Blue Desktop */
+            font-family: 'Courier Prime', monospace;
+            overflow: hidden;
+            color: #000;
         }
 
-        /* --- Navigasi (Responsif) --- */
-        .sidebar {
-            position: fixed; left: 15px; top: 50%;
-            transform: translateY(-50%);
-            display: flex; flex-direction: column; gap: 15px;
-            z-index: 9999; /* Pastikan selalu paling atas */
+        /* --- DESKTOP ICONS (Kiri) --- */
+        .desktop {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
         }
 
-        .side-btn {
-            background: rgba(255, 255, 255, 0.9);
-            border: 2px solid var(--accent);
-            width: 50px; height: 50px;
-            border-radius: 50%; cursor: pointer;
-            font-size: 20px;
-            box-shadow: 0 4px 15px rgba(244, 114, 182, 0.2);
-            transition: 0.3s ease;
-            display: flex; align-items: center; justify-content: center;
-        }
-
-        .side-btn:hover { background: var(--accent); color: white; transform: scale(1.1) translateY(-2px); }
-
-        /* Control Musik */
-        .music-control { position: fixed; bottom: 20px; right: 20px; z-index: 9999; }
-        .music-btn-small { background: white; border: 2px solid var(--accent); color: var(--accent); border-radius: 20px; padding: 8px 15px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: 0.3s; font-family: 'Quicksand'; }
-        .music-btn-small:hover { background: var(--accent); color: white; }
-
-        /* --- Khusus Tampilan HP (Mobile) --- */
-        @media (max-width: 768px) {
-            .sidebar {
-                left: 50%; top: auto; bottom: 20px;
-                transform: translateX(-50%);
-                flex-direction: row;
-                background: rgba(255, 255, 255, 0.9);
-                padding: 10px 20px;
-                border-radius: 40px;
-                box-shadow: 0 4px 15px rgba(244, 114, 182, 0.3);
-            }
-            .music-control {
-                bottom: auto; top: 20px; right: 20px;
-            }
-            .glass-card {
-                margin-bottom: 80px !important; /* Biar ngga nabrak tombol navigasi di bawah */
-                padding: 30px !important;
-            }
-            h1 { font-size: 28px !important; }
-        }
-
-        /* --- Kontainer Utama --- */
-        .main-content {
-            display: flex; flex-direction: column;
-            align-items: center; justify-content: center;
-            min-height: 100vh; padding: 20px;
+        .icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 80px;
+            cursor: pointer;
             text-align: center;
         }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            padding: 40px; border-radius: 30px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.05), border: 1px solid rgba(255,255,255,0.5);
-            max-width: 450px; width: 90%;
-            position: relative;
+        .icon:hover .icon-text { background-color: #000080; color: white; border: 1px dotted white; }
+
+        .icon-img { font-size: 35px; margin-bottom: 5px; text-shadow: 2px 2px 0px #000; }
+        
+        .icon-text {
+            color: white;
+            font-size: 14px;
+            padding: 2px 4px;
+            font-family: 'VT323', monospace;
+            letter-spacing: 1px;
         }
 
-        h1 { font-family: 'Pacifico', cursive; color: var(--accent); margin-bottom: 5px; font-size: 32px; text-shadow: 2px 2px 4px rgba(244, 114, 182, 0.2); }
-        #teks-instruksi { font-size: 16px; margin-bottom: 30px; color: #6b7280; font-weight: 600;}
-
-        /* --- Tombol Aksi (Tiup Lilin) --- */
-        .btn-group { display: flex; gap: 15px; justify-content: center; margin-top: 10px; }
-
-        .action-btn {
-            background: var(--accent); color: white;
-            border: none; padding: 12px 28px;
-            border-radius: 25px; cursor: pointer;
-            font-family: 'Quicksand', sans-serif; font-weight: 700;
-            font-size: 16px; transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(244, 114, 182, 0.3);
-        }
-        .action-btn:hover { background: #ec4899; transform: translateY(-3px); box-shadow: 0 10px 25px rgba(236, 72, 153, 0.4); }
-        .action-btn.relight { background: #fbbf24; box-shadow: 0 8px 20px rgba(251, 191, 36, 0.3); color: #78350f; } 
-        .action-btn.relight:hover { background: #f59e0b; transform: translateY(-3px); }
-
-        /* --- KUE ULANG TAHUN ESTETIK --- */
-        .cake-container { position: relative; margin: 80px 0 50px 0; display: flex; justify-content: center; z-index: 10; }
-        .plate { position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); width: 220px; height: 50px; background: #ffffff; border-radius: 50%; box-shadow: 0 15px 20px rgba(0,0,0,0.06), inset 0 -5px 10px rgba(0,0,0,0.02); z-index: -1; }
-        .cake { width: 170px; height: 110px; background: #fff4e6; border-radius: 15px 15px 10px 10px; position: relative; box-shadow: inset -10px -10px 20px rgba(0,0,0,0.03), 0 8px 15px rgba(0,0,0,0.05); }
-        .icing { position: absolute; top: 0; left: 0; width: 100%; height: 45px; background: #ffb8c6; border-radius: 15px 15px 0 0; }
-        .drip { position: absolute; background: #ffb8c6; border-radius: 0 0 20px 20px; box-shadow: 2px 2px 5px rgba(0,0,0,0.02); }
-        .d1 { width: 30px; height: 25px; left: 5px; top: 40px; }
-        .d2 { width: 35px; height: 45px; left: 30px; top: 40px; }
-        .d3 { width: 30px; height: 15px; left: 60px; top: 40px; }
-        .d4 { width: 45px; height: 35px; left: 85px; top: 40px; }
-        .d5 { width: 30px; height: 20px; left: 125px; top: 40px; }
-        .d6 { width: 15px; height: 10px; left: 150px; top: 40px; border-radius: 0 0 10px 10px;}
-
-        .candle-wrapper { position: absolute; top: -65px; left: 50%; transform: translateX(-50%); width: 20px; z-index: 5; }
-        .candle-body { width: 14px; height: 55px; background: repeating-linear-gradient(-45deg, #ffffff, #ffffff 6px, #ff9ff3 6px, #ff9ff3 12px); border-radius: 6px; position: absolute; left: 3px; box-shadow: 2px 2px 5px rgba(0,0,0,0.08); border: 1px solid rgba(255,255,255,0.8); }
-        .wick { width: 3px; height: 12px; background: #555; position: absolute; top: -10px; left: 8.5px; border-radius: 2px; }
-        .flame { width: 18px; height: 30px; background-color: var(--flame-inner); border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%; position: absolute; top: -38px; left: 1px; box-shadow: 0 0 15px var(--flame-inner), 0 0 25px var(--flame-outer), 0 0 45px var(--flame-outer); transform-origin: bottom center; animation: flicker 0.3s ease-in-out infinite alternate; filter: blur(0.5px); }
-        .flame::after { content: ''; width: 8px; height: 18px; background: rgba(255, 255, 255, 0.9); border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%; position: absolute; bottom: 3px; left: 5px; }
-
-        @keyframes flicker {
-            0%   { transform: rotate(-2deg) scaleY(1.0); opacity: 0.9; }
-            25%  { transform: rotate(1deg) scaleY(1.05); opacity: 1; }
-            50%  { transform: rotate(-1deg) scaleY(0.95); opacity: 0.95; }
-            75%  { transform: rotate(2deg) scaleY(1.02); opacity: 1; }
-            100% { transform: rotate(-1deg) scaleY(1.0); opacity: 0.9; }
+        /* --- WINDOW 95 STYLE --- */
+        .window {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 450px;
+            background: #c0c0c0;
+            border: 2px solid;
+            border-color: #ffffff #000000 #000000 #ffffff;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            display: none; /* Sembunyi default */
+            z-index: 10;
         }
 
-        /* --- Transisi --- */
+        .window.active { display: block; z-index: 100; }
+
+        .title-bar {
+            background: linear-gradient(90deg, #000080, #1084d0);
+            padding: 3px 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .title-bar-text {
+            color: white;
+            font-weight: bold;
+            font-family: 'Courier Prime', monospace;
+            font-size: 14px;
+        }
+
+        .title-bar-controls { display: flex; gap: 2px; }
+
+        .title-btn {
+            width: 18px; height: 18px;
+            background: #c0c0c0;
+            border: 1px solid;
+            border-color: #ffffff #000000 #000000 #ffffff;
+            font-weight: bold;
+            font-size: 10px;
+            cursor: pointer;
+            display: flex; justify-content: center; align-items: center;
+        }
+        .title-btn:active { border-color: #000000 #ffffff #ffffff #000000; }
+
+        .window-content { padding: 15px; background: #ffffff; border: 2px solid; border-color: #808080 #ffffff #ffffff #808080; margin: 5px; min-height: 200px; }
+
+        /* --- BUTTONS --- */
+        .win-btn {
+            background: #c0c0c0;
+            border: 2px solid;
+            border-color: #ffffff #000000 #000000 #ffffff;
+            padding: 8px 15px;
+            font-family: 'Courier Prime', monospace;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        .win-btn:active { border-color: #000000 #ffffff #ffffff #000000; padding: 9px 14px 7px 16px; }
+
+        /* --- SPECIFIC WINDOW STYLES --- */
+        
+        /* 1. Present / Pesan */
+        #content-msg { text-align: left; }
+        .msg-header { background: #000080; color: white; padding: 10px; text-align: center; border: 2px solid; border-color: #ffffff #000000 #000000 #ffffff; margin-bottom: 15px; font-weight: bold; }
+        .msg-title { color: #d32f2f; font-family: 'VT323', monospace; font-size: 24px; text-align: center; margin-bottom: 10px; }
+        .msg-body { font-size: 14px; line-height: 1.6; color: #333; }
+
+        /* 2. Music Player */
+        #content-music { text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; background: #c0c0c0;}
+        .music-title { font-weight: bold; font-size: 18px; margin-bottom: 5px; }
+        .music-artist { font-size: 12px; color: #555; margin-bottom: 20px; }
+        .play-btn { width: 50px; height: 50px; font-size: 20px; display: flex; justify-content: center; align-items: center; margin-bottom: 20px; }
+        .progress-bar { width: 100%; height: 20px; background: #fff; border: 2px solid; border-color: #808080 #ffffff #ffffff #808080; position: relative; margin-bottom: 10px; }
+        .progress-fill { height: 100%; width: 0%; background: #000080; }
+        
+        /* 3. Cake.exe */
+        #content-cake { text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .cake-title { color: #d32f2f; font-family: 'Press Start 2P', cursive; font-size: 16px; margin-bottom: 20px; text-shadow: 2px 2px #ffcccc; margin-top: 10px; }
+        
+        .cake-box { position: relative; width: 120px; height: 120px; margin: 0 auto 20px auto; }
+        .cake-img { font-size: 80px; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
+        .fire { 
+            position: absolute; top: -10px; left: 50%; transform: translateX(-50%); 
+            font-size: 30px; animation: flicker 0.2s infinite alternate; 
+        }
+        @keyframes flicker { 0% { transform: translateX(-50%) scale(1); opacity: 0.9; } 100% { transform: translateX(-50%) scale(1.2); opacity: 1; } }
+
         .hidden { display: none !important; }
-        .fade-in { animation: fadeIn 0.8s ease-out forwards; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* 4. Gallery */
+        #content-gal { text-align: center; }
     </style>
 </head>
 <body>
 
-    <div class="sidebar">
-        <button class="side-btn" onclick="showSection('message')" title="Pesan">💌</button>
-        <button class="side-btn" onclick="showSection('cake')" title="Kue Ulang Tahun">🎂</button>
-        <button class="side-btn" onclick="showSection('gallery')" title="Galeri">📸</button>
-        <button class="side-btn" onclick="showSection('wish')" title="Harapan">🌟</button>
+    <audio id="bg-music" loop>
+        <source src="https://www.chosic.com/wp-content/uploads/2021/04/Happy-Birthday-To-You-Retro-Gaming-Version.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="desktop">
+        <div class="icon" onclick="openWindow('win-msg')">
+            <div class="icon-img">🎁</div>
+            <div class="icon-text">Present.exe</div>
+        </div>
+        <div class="icon" onclick="openWindow('win-music')">
+            <div class="icon-img">🎵</div>
+            <div class="icon-text">Music.mp3</div>
+        </div>
+        <div class="icon" onclick="openWindow('win-cake')">
+            <div class="icon-img">🎂</div>
+            <div class="icon-text">Cake.exe</div>
+        </div>
+        <div class="icon" onclick="openWindow('win-gal')">
+            <div class="icon-img">🖼️</div>
+            <div class="icon-text">Gallery.jpg</div>
+        </div>
     </div>
 
-    <div class="main-content">
-        <div class="music-control">
-            <button class="music-btn-small" onclick="toggleMusic()" id="music-status">🎵 Putar BGM</button>
+    <div id="win-msg" class="window active">
+        <div class="title-bar">
+            <div class="title-bar-text">HAPPY_BIRTHDAY.TXT</div>
+            <div class="title-bar-controls">
+                <button class="title-btn">_</button><button class="title-btn">□</button><button class="title-btn" onclick="closeWindow('win-msg')">X</button>
+            </div>
         </div>
-        <audio id="myAudio" loop>
-            <source src="https://www.chosic.com/wp-content/uploads/2021/04/Happy-Birthday-To-You-Retro-Gaming-Version.mp3" type="audio/mpeg">
-        </audio>
+        <div class="window-content" id="content-msg">
+            <div class="msg-header">❤️ HAPPY BIRTHDAY ❤️</div>
+            <div class="msg-title">SELAMAT ULANG TAHUN SAYANG</div>
+            <div class="msg-body">
+                Haiii, selamat ulang tahun yaa sayang! Hari ini aku pengen kamu ngerasain semua vibes positif dan keajaiban yang cuma bisa didapetin kalo kamu ada di dunia ini.<br><br>
+                Makasih udah jadi partner in crime, dan sumber banyak momen bahagia. Jangan lupa kita bakal terus ngejar mimpi bareng-bareng.<br><br>
+                <i style="color: #d32f2f;">Next, kamu klik icon Music terus tiup lilin yaa!</i>
+            </div>
+        </div>
+    </div>
 
-        <div class="glass-card fade-in" id="main-card">
+    <div id="win-music" class="window">
+        <div class="title-bar">
+            <div class="title-bar-text">MUSIC_PLAYER.EXE</div>
+            <div class="title-bar-controls">
+                <button class="title-btn">_</button><button class="title-btn">□</button><button class="title-btn" onclick="closeWindow('win-music')">X</button>
+            </div>
+        </div>
+        <div class="window-content" id="content-music" style="background: #c0c0c0; border: none;">
+            <div class="music-title">Play ini yaa.mp3</div>
+            <div class="music-artist">Classic Hits</div>
             
-            <div id="section-msg" class="fade-in">
-                <h1 style="font-size: 38px;">Happy Birthday! ✨</h1>
-                <h2 style="font-family: 'Quicksand'; color: var(--text-color); font-size: 20px; margin-top: 0;">Pesan Spesial Buat Kamu 💌</h2>
-                <p style="line-height: 1.6; font-size: 16px; margin-top: 20px;">
-                    Cuma mau bilang, makasih ya udah lahir ke dunia ini dan jadi bagian terbaik dari hidupku. You mean the world to me! ❤️
-                </p>
-                <p style="color: var(--accent); font-weight: bold; margin-top: 30px; font-size: 14px;">
-                    Psst.. Coba klik tombol kue (🎂) di menu navigasi deh!
-                </p>
-            </div>
-
-            <div id="section-cake" class="hidden">
-                <h2 style="font-family: 'Pacifico'; color: var(--accent); font-size: 28px; margin-top: 0;">Make a Wish! 🎂</h2>
-                
-                <div class="cake-container">
-                    <div class="plate"></div>
-                    <div class="cake">
-                        <div class="icing"></div>
-                        <div class="drip d1"></div>
-                        <div class="drip d2"></div>
-                        <div class="drip d3"></div>
-                        <div class="drip d4"></div>
-                        <div class="drip d5"></div>
-                        <div class="drip d6"></div>
-                        
-                        <div class="candle-wrapper">
-                            <div class="wick"></div>
-                            <div class="candle-body"></div>
-                            <div class="flame" id="lilin-api"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <p id="teks-instruksi">Ada kejutan kecil buat kamu. <br>Coba tiup lilinnya ya!</p>
-                
-                <div class="btn-group">
-                    <button class="action-btn" id="btn-tiup" onclick="tiupLilin()">Tiup Lilin 💨</button>
-                    <button class="action-btn relight hidden" id="btn-nyala" onclick="nyalainLilin()">Nyalain Lagi 🔥</button>
-                </div>
-            </div>
-
-            <div id="section-after-blow" class="hidden fade-in" style="margin-top: 10px;">
-                <h2 style="color: var(--accent); font-family: 'Pacifico', cursive; font-size: 28px;">Yeay! HBD Sayang! 🎉</h2>
-                <p style="line-height: 1.6; font-size: 15px;">Selamat ulang tahun ya! Semoga hari-harimu selalu seindah kue ini, makin dewasa, bahagia terus sama aku, dan semua yang kamu harapkan bisa terwujud. I Love You so much! ❤️</p>
-            </div>
-
-            <div id="section-gal" class="hidden fade-in">
-                <h2 style="font-family: 'Pacifico'; color: var(--accent);">Our Memories 📸</h2>
-                <p style="color: #9ca3af; font-size: 14px;">(Tempatin foto-foto lucu kalian di sini ya bub)</p>
-            </div>
+            <button class="win-btn play-btn" id="play-btn-ui" onclick="toggleMusic()">▶</button>
             
-            <div id="section-wish" class="hidden fade-in">
-                <h2 style="font-family: 'Pacifico'; color: var(--accent);">My Wish 🌟</h2>
-                <p>Semoga kita bisa merayakan ulang tahun kamu yang berikutnya, dan berikutnya, dan berikutnya lagi sama-sama. 💍</p>
+            <div style="display: flex; justify-content: space-between; width: 80%; font-size: 10px; margin-bottom: 2px;">
+                <span>00:00</span><span id="time-end">04:16</span>
+            </div>
+            <div class="progress-bar" style="width: 80%;">
+                <div class="progress-fill" id="music-progress"></div>
+            </div>
+            <div style="width: 80%; text-align: left; font-size: 16px;">🔊 🔉 🔈</div>
+        </div>
+    </div>
+
+    <div id="win-cake" class="window">
+        <div class="title-bar">
+            <div class="title-bar-text">CAKE.EXE</div>
+            <div class="title-bar-controls">
+                <button class="title-btn">_</button><button class="title-btn">□</button><button class="title-btn" onclick="closeWindow('win-cake')">X</button>
+            </div>
+        </div>
+        <div class="window-content" id="content-cake">
+            <div class="cake-title" id="text-atas">AYO TIUP DULU!</div>
+            
+            <div class="cake-box">
+                <div class="cake-img">🎂</div>
+                <div class="fire" id="api-lilin">🔥</div>
+            </div>
+
+            <div id="text-bawah" style="font-family: 'Courier Prime'; margin-bottom: 10px;">Jangan lupa berdoa duluuu...</div>
+            
+            <button class="win-btn" id="btn-tiup" onclick="tiupLilin()">💨 Tiup Lilin</button>
+            <button class="win-btn hidden" id="btn-close-cake" onclick="closeWindow('win-cake')" style="color: red;">X Close</button>
+        </div>
+    </div>
+
+    <div id="win-gal" class="window">
+        <div class="title-bar">
+            <div class="title-bar-text">GALLERY.JPG</div>
+            <div class="title-bar-controls">
+                <button class="title-btn">_</button><button class="title-btn">□</button><button class="title-btn" onclick="closeWindow('win-gal')">X</button>
+            </div>
+        </div>
+        <div class="window-content" id="content-gal">
+            <div style="width: 100%; height: 200px; background: #eee; display: flex; justify-content: center; align-items: center; border: 1px inset #fff;">
+                <span style="color: #888;">[ Foto Kalian Berdua Masukin Sini bub ]</span>
             </div>
         </div>
     </div>
 
     <script>
-        var audio = document.getElementById("myAudio");
-        
+        // LOGIC WINDOW MANAGER (Buka / Tutup Window)
+        function openWindow(winId) {
+            // Kita bikin semua window bisa numpuk, yang diklik otomatis pindah ke atas (z-index)
+            let windows = document.querySelectorAll('.window');
+            windows.forEach(w => w.style.zIndex = 10); // Reset z-index
+            
+            let targetWin = document.getElementById(winId);
+            targetWin.classList.add('active');
+            targetWin.style.zIndex = 100; // Bawa ke paling atas
+        }
+
+        function closeWindow(winId) {
+            document.getElementById(winId).classList.remove('active');
+        }
+
+        // LOGIC MUSIC PLAYER
+        const audio = document.getElementById("bg-music");
+        const playBtnUI = document.getElementById("play-btn-ui");
+        const progressFill = document.getElementById("music-progress");
+        let isPlaying = false;
+
         function toggleMusic() {
-            if (audio.paused) {
-                audio.play();
-                document.getElementById('music-status').innerHTML = "⏸ Pause BGM";
-            } else {
+            if (isPlaying) {
                 audio.pause();
-                document.getElementById('music-status').innerHTML = "🎵 Putar BGM";
+                playBtnUI.innerHTML = "▶";
+                isPlaying = false;
+            } else {
+                audio.play();
+                playBtnUI.innerHTML = "⏸"; // Tanda Pause
+                isPlaying = true;
             }
         }
 
+        // Simulasi jalannya progress bar
+        audio.addEventListener('timeupdate', () => {
+            if(audio.duration) {
+                const progressPercent = (audio.currentTime / audio.duration) * 100;
+                progressFill.style.width = progressPercent + "%";
+            }
+        });
+
+        // LOGIC CAKE / TIUP LILIN
         function tiupLilin() {
-            document.getElementById('lilin-api').classList.add('hidden');
+            // Hilangkan api
+            document.getElementById('api-lilin').classList.add('hidden');
+            
+            // Ubah Teks Atas
+            document.getElementById('text-atas').innerHTML = "YEAY!";
+            
+            // Ubah Teks Bawah
+            document.getElementById('text-bawah').innerHTML = "Happy Birthday!! ✨<br>NEXT BUKA GALLERY NYA YAA!";
+            
+            // Ubah Tombol
             document.getElementById('btn-tiup').classList.add('hidden');
-            document.getElementById('btn-nyala').classList.remove('hidden');
-            document.getElementById('teks-instruksi').innerHTML = "Yeeay! Semoga doanya terkabul! 💖";
-            document.getElementById('section-after-blow').classList.remove('hidden');
-        }
-
-        function nyalainLilin() {
-            document.getElementById('lilin-api').classList.remove('hidden');
-            document.getElementById('btn-nyala').classList.add('hidden');
-            document.getElementById('btn-tiup').classList.remove('hidden');
-            document.getElementById('teks-instruksi').innerHTML = "Ada kejutan kecil buat kamu. <br>Coba tiup lilinnya ya!";
-            document.getElementById('section-after-blow').classList.add('hidden');
-        }
-
-        function showSection(name) {
-            // 1. Sembunyikan semuanya
-            document.getElementById('section-msg').classList.add('hidden');
-            document.getElementById('section-cake').classList.add('hidden');
-            document.getElementById('section-after-blow').classList.add('hidden');
-            document.getElementById('section-gal').classList.add('hidden');
-            document.getElementById('section-wish').classList.add('hidden');
-
-            // 2. Tampilkan yang dipencet
-            if(name === 'message') {
-                document.getElementById('section-msg').classList.remove('hidden');
-            }
-            else if(name === 'cake') {
-                document.getElementById('section-cake').classList.remove('hidden');
-                if(document.getElementById('btn-tiup').classList.contains('hidden')) {
-                    document.getElementById('section-after-blow').classList.remove('hidden');
-                }
-            }
-            else if(name === 'gallery') {
-                document.getElementById('section-gal').classList.remove('hidden');
-            }
-            else if(name === 'wish') {
-                document.getElementById('section-wish').classList.remove('hidden');
-            }
+            document.getElementById('btn-close-cake').classList.remove('hidden');
         }
     </script>
 </body>
