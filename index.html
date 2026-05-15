@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday Sayang! 💖</title>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">
     <style>
         :root {
-            --pink-bg: #ffe4e1; /* Pastel Pink */
-            --pink-dark: #ffb6c1;
-            --accent: #ff6b81; /* Lebih menyala */
-            --candle-body: #ff9ff3;
+            --pink-bg: #fdf2f8; /* Soft pink background */
+            --accent: #f472b6; /* Estetik pink pastel */
+            --text-color: #4b5563;
             --flame-outer: #ff9f43;
             --flame-inner: #fff200;
         }
@@ -19,8 +18,10 @@
             margin: 0; padding: 0;
             font-family: 'Quicksand', sans-serif;
             background-color: var(--pink-bg);
-            color: #444;
+            color: var(--text-color);
             overflow-x: hidden;
+            background-image: radial-gradient(#fbcfe8 1px, transparent 1px);
+            background-size: 20px 20px; /* Efek polkadot samar */
         }
 
         /* --- Navigasi Samping (4 Tombol) --- */
@@ -32,16 +33,18 @@
         }
 
         .side-btn {
-            background: white; border: 2px solid var(--accent);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+            border: 2px solid var(--accent);
             width: 50px; height: 50px;
             border-radius: 50%; cursor: pointer;
             font-size: 20px;
-            box-shadow: 0 4px 10px rgba(255,107,129,0.2);
+            box-shadow: 0 4px 15px rgba(244, 114, 182, 0.2);
             transition: 0.3s ease;
             display: flex; align-items: center; justify-content: center;
         }
 
-        .side-btn:hover { background: var(--accent); color: white; transform: scale(1.1); }
+        .side-btn:hover { background: var(--accent); color: white; transform: scale(1.1) translateY(-2px); }
 
         /* --- Kontainer Utama --- */
         .main-content {
@@ -52,85 +55,157 @@
         }
 
         .glass-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
             padding: 40px; border-radius: 30px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05), border: 1px solid rgba(255,255,255,0.5);
             max-width: 450px; width: 90%;
             position: relative;
         }
 
-        h1 { font-family: 'Pacifico', cursive; color: var(--accent); margin-bottom: 10px; }
-        #teks-instruksi { font-size: 18px; margin-bottom: 20px; color: #666; font-weight: bold;}
+        h1 { font-family: 'Pacifico', cursive; color: var(--accent); margin-bottom: 5px; font-size: 32px; text-shadow: 2px 2px 4px rgba(244, 114, 182, 0.2); }
+        #teks-instruksi { font-size: 16px; margin-bottom: 30px; color: #6b7280; font-weight: 600;}
 
-        /* --- Tombol Utama (Bawah Kue) --- */
-        .btn-group { display: flex; gap: 15px; justify-content: center; margin-top: 20px; }
+        /* --- Tombol Utama --- */
+        .btn-group { display: flex; gap: 15px; justify-content: center; margin-top: 10px; }
 
         .action-btn {
             background: var(--accent); color: white;
-            border: none; padding: 12px 24px;
+            border: none; padding: 12px 28px;
             border-radius: 25px; cursor: pointer;
-            font-family: 'Quicksand', sans-serif; font-weight: bold;
-            font-size: 16px; transition: 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 107, 129, 0.3);
+            font-family: 'Quicksand', sans-serif; font-weight: 700;
+            font-size: 16px; transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(244, 114, 182, 0.3);
         }
-        .action-btn:hover { background: #ff4757; transform: translateY(-3px); }
-        .action-btn.relight { background: #ffa502; box-shadow: 0 4px 15px rgba(255, 165, 2, 0.3); } /* Tombol Oranye */
-        .action-btn.relight:hover { background: #ff7f50; }
+        .action-btn:hover { background: #ec4899; transform: translateY(-3px); box-shadow: 0 10px 25px rgba(236, 72, 153, 0.4); }
+        .action-btn.relight { background: #fbbf24; box-shadow: 0 8px 20px rgba(251, 191, 36, 0.3); color: #78350f; } 
+        .action-btn.relight:hover { background: #f59e0b; transform: translateY(-3px); }
 
-        /* --- CSS KUE ULANG TAHUN & API BERGERAK --- */
-        .cake-container { position: relative; margin: 60px 0 30px 0; display: flex; justify-content: center; }
+        /* =========================================
+           KUE ULANG TAHUN ESTETIK (KOREAN BENTO) 
+           ========================================= */
+        .cake-container { 
+            position: relative; 
+            margin: 80px 0 50px 0; 
+            display: flex; 
+            justify-content: center; 
+            z-index: 10; 
+        }
 
-        /* Kue Base */
-        .cake { width: 160px; height: 110px; background: #f4a460; border-radius: 15px 15px 0 0; position: relative; }
-        /* Krim Gula */
-        .cake::after { content: ""; position: absolute; width: 160px; height: 25px; background: #8b4513; top: 35px; left: 0; }
+        /* Piring Estetik di Bawah Kue */
+        .plate {
+            position: absolute;
+            bottom: -20px; left: 50%;
+            transform: translateX(-50%);
+            width: 220px; height: 50px;
+            background: #ffffff;
+            border-radius: 50%;
+            box-shadow: 0 15px 20px rgba(0,0,0,0.06), inset 0 -5px 10px rgba(0,0,0,0.02);
+            z-index: -1;
+        }
 
-        /* Lilin */
-        .candle-wrapper { position: absolute; top: -60px; left: 50%; transform: translateX(-50%); width: 20px; }
-        .candle-body { width: 12px; height: 50px; background: var(--candle-body); border-radius: 4px; position: absolute; left: 4px; }
-        .wick { width: 2px; height: 10px; background: #222; position: absolute; top: -10px; left: 9px; }
+        /* Badan Kue (Cream) */
+        .cake { 
+            width: 170px; height: 110px; 
+            background: #fff4e6; 
+            border-radius: 15px 15px 10px 10px; 
+            position: relative; 
+            box-shadow: inset -10px -10px 20px rgba(0,0,0,0.03), 0 8px 15px rgba(0,0,0,0.05);
+        }
 
-        /* Api Lilin yang Bergerak (Flicker) */
+        /* Krim Pink Bagian Atas */
+        .icing {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 45px;
+            background: #ffb8c6;
+            border-radius: 15px 15px 0 0;
+        }
+
+        /* Lelehan Krim Pink (Drips) */
+        .drip {
+            position: absolute;
+            background: #ffb8c6;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.02);
+        }
+        .d1 { width: 30px; height: 25px; left: 5px; top: 40px; }
+        .d2 { width: 35px; height: 45px; left: 30px; top: 40px; }
+        .d3 { width: 30px; height: 15px; left: 60px; top: 40px; }
+        .d4 { width: 45px; height: 35px; left: 85px; top: 40px; }
+        .d5 { width: 30px; height: 20px; left: 125px; top: 40px; }
+        .d6 { width: 15px; height: 10px; left: 150px; top: 40px; border-radius: 0 0 10px 10px;}
+
+        /* Lilin Motif Garis-garis */
+        .candle-wrapper { 
+            position: absolute; top: -65px; left: 50%; 
+            transform: translateX(-50%); width: 20px; z-index: 5; 
+        }
+        .candle-body { 
+            width: 14px; height: 55px; 
+            background: repeating-linear-gradient(
+                -45deg,
+                #ffffff,
+                #ffffff 6px,
+                #ff9ff3 6px,
+                #ff9ff3 12px
+            );
+            border-radius: 6px; position: absolute; left: 3px; 
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.08);
+            border: 1px solid rgba(255,255,255,0.8);
+        }
+        
+        /* Sumbu Lilin */
+        .wick { 
+            width: 3px; height: 12px; background: #555; 
+            position: absolute; top: -10px; left: 8.5px; 
+            border-radius: 2px;
+        }
+
+        /* Api Lilin Bergerak Halus */
         .flame {
-            width: 16px; height: 26px;
+            width: 18px; height: 30px;
             background-color: var(--flame-inner);
-            border-radius: 8px 8px 8px 8px / 20px 20px 8px 8px; /* Bentuk Tetesan Air */
-            position: absolute; top: -32px; left: 2px;
+            border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%;
+            position: absolute; top: -38px; left: 1px;
             box-shadow: 
-                0 0 10px var(--flame-inner), 
-                0 0 20px var(--flame-outer), 
-                0 0 30px var(--flame-outer);
+                0 0 15px var(--flame-inner), 
+                0 0 25px var(--flame-outer), 
+                0 0 45px var(--flame-outer);
             transform-origin: bottom center;
-            /* Animasi Flicker Utama */
             animation: flicker 0.3s ease-in-out infinite alternate;
             filter: blur(0.5px);
         }
 
-        /* Inti Api Kuning Tua */
+        /* Inti Api */
         .flame::after {
             content: '';
-            width: 8px; height: 16px;
+            width: 8px; height: 18px;
             background: rgba(255, 255, 255, 0.9);
-            border-radius: 4px 4px 4px 4px / 12px 12px 4px 4px;
-            position: absolute; bottom: 2px; left: 4px;
+            border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%;
+            position: absolute; bottom: 3px; left: 5px;
         }
 
-        /* Keyframes buat Api Goyang/Ngedip */
         @keyframes flicker {
-            0%   { transform: rotate(-1deg) scaleY(1.0) skewX(-1deg); opacity: 0.9; }
-            25%  { transform: rotate(1deg) scaleY(1.1) skewX(1deg); opacity: 1; }
-            50%  { transform: rotate(-1.5deg) scaleY(1.05) skewX(0deg); opacity: 0.95; }
-            75%  { transform: rotate(2deg) scaleY(0.95) skewX(-1deg); opacity: 1; }
-            100% { transform: rotate(-1deg) scaleY(1.0) skewX(1deg); opacity: 0.9; }
+            0%   { transform: rotate(-2deg) scaleY(1.0); opacity: 0.9; }
+            25%  { transform: rotate(1deg) scaleY(1.05); opacity: 1; }
+            50%  { transform: rotate(-1deg) scaleY(0.95); opacity: 0.95; }
+            75%  { transform: rotate(2deg) scaleY(1.02); opacity: 1; }
+            100% { transform: rotate(-1deg) scaleY(1.0); opacity: 0.9; }
         }
 
-        /* --- Lain-lain --- */
+        /* --- Transisi dan Utility --- */
         .hidden { display: none !important; }
-        .fade-in { animation: fadeIn 1s ease-in; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .fade-in { animation: fadeIn 0.8s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         
         .music-control { position: fixed; bottom: 20px; right: 20px; z-index: 100; }
+        .music-btn-small {
+            background: white; border: 2px solid var(--accent); color: var(--accent);
+            border-radius: 20px; padding: 8px 15px; font-weight: bold; cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: 0.3s; font-family: 'Quicksand';
+        }
+        .music-btn-small:hover { background: var(--accent); color: white; }
     </style>
 </head>
 <body>
@@ -144,7 +219,7 @@
 
     <div class="main-content">
         <div class="music-control">
-            <button class="action-btn" onclick="toggleMusic()" id="music-status">🎵 Putar Musik</button>
+            <button class="music-btn-small" onclick="toggleMusic()" id="music-status">🎵 Putar BGM</button>
         </div>
         <audio id="myAudio" loop>
             <source src="https://www.chosic.com/wp-content/uploads/2021/04/Happy-Birthday-To-You-Retro-Gaming-Version.mp3" type="audio/mpeg">
@@ -152,10 +227,19 @@
 
         <div class="glass-card fade-in" id="main-card">
             <div id="section-home">
-                <h1>HBD Sayang! ✨</h1>
+                <h1>Happy Birthday! ✨</h1>
                 
                 <div class="cake-container">
+                    <div class="plate"></div>
                     <div class="cake">
+                        <div class="icing"></div>
+                        <div class="drip d1"></div>
+                        <div class="drip d2"></div>
+                        <div class="drip d3"></div>
+                        <div class="drip d4"></div>
+                        <div class="drip d5"></div>
+                        <div class="drip d6"></div>
+                        
                         <div class="candle-wrapper">
                             <div class="wick"></div>
                             <div class="candle-body"></div>
@@ -164,22 +248,33 @@
                     </div>
                 </div>
 
-                <p id="teks-instruksi">Dibuat khusus buat kamu. Coba tiup lilinnya!</p>
+                <p id="teks-instruksi">Ada kejutan kecil buat kamu. <br>Coba tiup lilinnya ya!</p>
                 
                 <div class="btn-group">
-                    <button class="action-btn" id="btn-tiup" onclick="tiupLilin()">Tiup Lilin 🎂</button>
+                    <button class="action-btn" id="btn-tiup" onclick="tiupLilin()">Tiup Lilin 💨</button>
                     <button class="action-btn relight hidden" id="btn-nyala" onclick="nyalainLilin()">Nyalain Lagi 🔥</button>
                 </div>
             </div>
 
-            <div id="section-after-blow" class="hidden fade-in" style="margin-top: 20px;">
-                <h2 style="color: var(--accent); font-family: 'Pacifico', cursive;">Yeay! HBD! 🎉</h2>
-                <p>Selamat ulang tahun ya sayang! Semoga bahagia terus sama aku, makin dewasa, makin cantik/ganteng, dan semua mimpinya tercapai. I Love You so much! ❤️💍</p>
+            <div id="section-after-blow" class="hidden fade-in" style="margin-top: 10px;">
+                <h2 style="color: var(--accent); font-family: 'Pacifico', cursive; font-size: 28px;">Yeay! HBD Sayang! 🎉</h2>
+                <p style="line-height: 1.6; font-size: 15px;">Selamat ulang tahun ya! Semoga hari-harimu selalu seindah kue ini, makin dewasa, bahagia terus sama aku, dan semua yang kamu harapkan bisa terwujud. I Love You so much! ❤️</p>
             </div>
 
-            <div id="section-msg" class="hidden"><h2>Pesan Rahasia</h2><p>Kamu adalah kado terindah dalam hidupku. Makasih udah lahir ya!</p></div>
-            <div id="section-gal" class="hidden"><h2>Memories</h2><p>(Pasang foto kalian di sini nanti bub)</p></div>
-            <div id="section-wish" class="hidden"><h2>My Wish</h2><p>Semoga kita langgeng terus sampai nanti! ❤️</p></div>
+            <div id="section-msg" class="hidden fade-in">
+                <h2 style="font-family: 'Pacifico'; color: var(--accent);">Pesan Rahasia 💌</h2>
+                <p>Cuma mau bilang, makasih ya udah lahir ke dunia ini dan jadi bagian terbaik dari hidupku. You mean the world to me!</p>
+            </div>
+            
+            <div id="section-gal" class="hidden fade-in">
+                <h2 style="font-family: 'Pacifico'; color: var(--accent);">Our Memories 📸</h2>
+                <p style="color: #9ca3af; font-size: 14px;">(Tempatin foto-foto lucu kalian di sini ya bub)</p>
+            </div>
+            
+            <div id="section-wish" class="hidden fade-in">
+                <h2 style="font-family: 'Pacifico'; color: var(--accent);">My Wish 🌟</h2>
+                <p>Semoga kita bisa merayakan ulang tahun kamu yang berikutnya, dan berikutnya, dan berikutnya lagi sama-sama. 💍</p>
+            </div>
         </div>
     </div>
 
@@ -189,50 +284,43 @@
         function toggleMusic() {
             if (audio.paused) {
                 audio.play();
-                document.getElementById('music-status').innerHTML = "⏸ Pause Musik";
+                document.getElementById('music-status').innerHTML = "⏸ Pause BGM";
             } else {
                 audio.pause();
-                document.getElementById('music-status').innerHTML = "🎵 Putar Musik";
+                document.getElementById('music-status').innerHTML = "🎵 Putar BGM";
             }
         }
 
         function tiupLilin() {
-            // 1. Sembunyikan api (mati)
             document.getElementById('lilin-api').classList.add('hidden');
-            
-            // 2. Ganti tombol: Tiup hilang, Nyalain muncul
             document.getElementById('btn-tiup').classList.add('hidden');
             document.getElementById('btn-nyala').classList.remove('hidden');
-            
-            // 3. Update instruksi & Tampilkan ucapan
-            document.getElementById('teks-instruksi').innerHTML = "Yeay! Make a wish! ❤️";
+            document.getElementById('teks-instruksi').innerHTML = "Yeeay! Make a wish! 💖";
             document.getElementById('section-after-blow').classList.remove('hidden');
         }
 
         function nyalainLilin() {
-            // 1. Munculkan api kembali (nyala)
             document.getElementById('lilin-api').classList.remove('hidden');
-            
-            // 2. Ganti tombol balik: Nyalain hilang, Tiup muncul
             document.getElementById('btn-nyala').classList.add('hidden');
             document.getElementById('btn-tiup').classList.remove('hidden');
-            
-            // 3. Reset instruksi & Sembunyikan ucapan
-            document.getElementById('teks-instruksi').innerHTML = "Dibuat khusus buat kamu. Coba tiup lilinnya!";
+            document.getElementById('teks-instruksi').innerHTML = "Ada kejutan kecil buat kamu. <br>Coba tiup lilinnya ya!";
             document.getElementById('section-after-blow').classList.add('hidden');
         }
 
-        // Fungsi navigasi sidebar
         function showSection(name) {
-            // Sembunyikan semua section konten
             document.getElementById('section-home').classList.add('hidden');
             document.getElementById('section-after-blow').classList.add('hidden');
             document.getElementById('section-msg').classList.add('hidden');
             document.getElementById('section-gal').classList.add('hidden');
             document.getElementById('section-wish').classList.add('hidden');
 
-            // Tampilkan yang dipilih
-            if(name === 'home') document.getElementById('section-home').classList.remove('hidden');
+            if(name === 'home') {
+                document.getElementById('section-home').classList.remove('hidden');
+                // Kalau kembali ke home dan lilin mati, pastikan ucapan tetap muncul
+                if(document.getElementById('btn-tiup').classList.contains('hidden')) {
+                    document.getElementById('section-after-blow').classList.remove('hidden');
+                }
+            }
             if(name === 'message') document.getElementById('section-msg').classList.remove('hidden');
             if(name === 'gallery') document.getElementById('section-gal').classList.remove('hidden');
             if(name === 'wish') document.getElementById('section-wish').classList.remove('hidden');
