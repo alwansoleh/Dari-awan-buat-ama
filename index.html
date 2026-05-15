@@ -7,152 +7,145 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
     <style>
         :root {
-            --pink-bg: #ffe4e1;
+            --pink-bg: #ffe4e1; /* Pastel Pink */
             --pink-dark: #ffb6c1;
-            --accent: #ff6b81;
+            --accent: #ff6b81; /* Lebih menyala */
+            --candle-body: #ff9ff3;
+            --flame-outer: #ff9f43;
+            --flame-inner: #fff200;
         }
 
         body {
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
             font-family: 'Quicksand', sans-serif;
             background-color: var(--pink-bg);
             color: #444;
             overflow-x: hidden;
         }
 
-        /* Navigasi Samping (4 Tombol) */
+        /* --- Navigasi Samping (4 Tombol) --- */
         .sidebar {
-            position: fixed;
-            left: 10px;
-            top: 50%;
+            position: fixed; left: 15px; top: 50%;
             transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+            display: flex; flex-direction: column; gap: 15px;
             z-index: 100;
         }
 
         .side-btn {
-            background: white;
-            border: 2px solid var(--accent);
-            padding: 10px;
-            border-radius: 12px;
-            cursor: pointer;
-            font-size: 18px;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
-            transition: 0.3s;
+            background: white; border: 2px solid var(--accent);
+            width: 50px; height: 50px;
+            border-radius: 50%; cursor: pointer;
+            font-size: 20px;
+            box-shadow: 0 4px 10px rgba(255,107,129,0.2);
+            transition: 0.3s ease;
+            display: flex; align-items: center; justify-content: center;
         }
 
-        .side-btn:hover {
-            background: var(--accent);
-            transform: scale(1.1);
-        }
+        .side-btn:hover { background: var(--accent); color: white; transform: scale(1.1); }
 
-        /* Kontainer Utama */
+        /* --- Kontainer Utama --- */
         .main-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 20px;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            min-height: 100vh; padding: 20px;
             text-align: center;
         }
 
         .glass-card {
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-            max-width: 400px;
-            width: 100%;
-        }
-
-        h1 { font-family: 'Pacifico', cursive; color: var(--accent); }
-
-        /* Musik Control */
-        .music-btn {
-            margin-bottom: 20px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 20px;
-            cursor: pointer;
-        }
-
-        /* CSS Kue Ulang Tahun */
-        .cake-container {
+            padding: 40px; border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            max-width: 450px; width: 90%;
             position: relative;
-            margin: 50px 0;
         }
 
-        .cake {
-            width: 150px;
-            height: 100px;
-            background: #f4a460;
-            border-radius: 10px 10px 0 0;
-            position: relative;
-            margin: 0 auto;
-        }
+        h1 { font-family: 'Pacifico', cursive; color: var(--accent); margin-bottom: 10px; }
+        #teks-instruksi { font-size: 18px; margin-bottom: 20px; color: #666; font-weight: bold;}
 
-        .cake::after {
-            content: "";
-            position: absolute;
-            width: 150px;
-            height: 20px;
-            background: #8b4513;
-            top: 30px; left: 0;
+        /* --- Tombol Utama (Bawah Kue) --- */
+        .btn-group { display: flex; gap: 15px; justify-content: center; margin-top: 20px; }
+
+        .action-btn {
+            background: var(--accent); color: white;
+            border: none; padding: 12px 24px;
+            border-radius: 25px; cursor: pointer;
+            font-family: 'Quicksand', sans-serif; font-weight: bold;
+            font-size: 16px; transition: 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 129, 0.3);
         }
+        .action-btn:hover { background: #ff4757; transform: translateY(-3px); }
+        .action-btn.relight { background: #ffa502; box-shadow: 0 4px 15px rgba(255, 165, 2, 0.3); } /* Tombol Oranye */
+        .action-btn.relight:hover { background: #ff7f50; }
+
+        /* --- CSS KUE ULANG TAHUN & API BERGERAK --- */
+        .cake-container { position: relative; margin: 60px 0 30px 0; display: flex; justify-content: center; }
+
+        /* Kue Base */
+        .cake { width: 160px; height: 110px; background: #f4a460; border-radius: 15px 15px 0 0; position: relative; }
+        /* Krim Gula */
+        .cake::after { content: ""; position: absolute; width: 160px; height: 25px; background: #8b4513; top: 35px; left: 0; }
 
         /* Lilin */
-        .candle {
-            width: 10px;
-            height: 40px;
-            background: #ff6b81;
-            position: absolute;
-            top: -40px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
+        .candle-wrapper { position: absolute; top: -60px; left: 50%; transform: translateX(-50%); width: 20px; }
+        .candle-body { width: 12px; height: 50px; background: var(--candle-body); border-radius: 4px; position: absolute; left: 4px; }
+        .wick { width: 2px; height: 10px; background: #222; position: absolute; top: -10px; left: 9px; }
 
+        /* Api Lilin yang Bergerak (Flicker) */
         .flame {
-            width: 15px;
-            height: 20px;
-            background: orange;
-            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-            position: absolute;
-            top: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: flicker 0.5s infinite alternate;
+            width: 16px; height: 26px;
+            background-color: var(--flame-inner);
+            border-radius: 8px 8px 8px 8px / 20px 20px 8px 8px; /* Bentuk Tetesan Air */
+            position: absolute; top: -32px; left: 2px;
+            box-shadow: 
+                0 0 10px var(--flame-inner), 
+                0 0 20px var(--flame-outer), 
+                0 0 30px var(--flame-outer);
+            transform-origin: bottom center;
+            /* Animasi Flicker Utama */
+            animation: flicker 0.3s ease-in-out infinite alternate;
+            filter: blur(0.5px);
         }
 
+        /* Inti Api Kuning Tua */
+        .flame::after {
+            content: '';
+            width: 8px; height: 16px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 4px 4px 4px 4px / 12px 12px 4px 4px;
+            position: absolute; bottom: 2px; left: 4px;
+        }
+
+        /* Keyframes buat Api Goyang/Ngedip */
         @keyframes flicker {
-            from { transform: translateX(-50%) scale(1); }
-            to { transform: translateX(-50%) scale(1.1); opacity: 0.8; }
+            0%   { transform: rotate(-1deg) scaleY(1.0) skewX(-1deg); opacity: 0.9; }
+            25%  { transform: rotate(1deg) scaleY(1.1) skewX(1deg); opacity: 1; }
+            50%  { transform: rotate(-1.5deg) scaleY(1.05) skewX(0deg); opacity: 0.95; }
+            75%  { transform: rotate(2deg) scaleY(0.95) skewX(-1deg); opacity: 1; }
+            100% { transform: rotate(-1deg) scaleY(1.0) skewX(1deg); opacity: 0.9; }
         }
 
-        .hidden { display: none; }
-
-        /* Animasi Muncul */
+        /* --- Lain-lain --- */
+        .hidden { display: none !important; }
         .fade-in { animation: fadeIn 1s ease-in; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        
+        .music-control { position: fixed; bottom: 20px; right: 20px; z-index: 100; }
     </style>
 </head>
 <body>
 
     <div class="sidebar">
-        <button class="side-btn" onclick="showSection('home')">🏠</button>
-        <button class="side-btn" onclick="showSection('message')">💌</button>
-        <button class="side-btn" onclick="showSection('gallery')">📸</button>
-        <button class="side-btn" onclick="showSection('wish')">🌟</button>
+        <button class="side-btn" onclick="showSection('home')" title="Home">🏠</button>
+        <button class="side-btn" onclick="showSection('message')" title="Pesan">💌</button>
+        <button class="side-btn" onclick="showSection('gallery')" title="Galeri">📸</button>
+        <button class="side-btn" onclick="showSection('wish')" title="Harapan">🌟</button>
     </div>
 
     <div class="main-content">
-        <button class="music-btn" onclick="toggleMusic()">🎵 Putar Musik</button>
+        <div class="music-control">
+            <button class="action-btn" onclick="toggleMusic()" id="music-status">🎵 Putar Musik</button>
+        </div>
         <audio id="myAudio" loop>
             <source src="https://www.chosic.com/wp-content/uploads/2021/04/Happy-Birthday-To-You-Retro-Gaming-Version.mp3" type="audio/mpeg">
         </audio>
@@ -160,36 +153,33 @@
         <div class="glass-card fade-in" id="main-card">
             <div id="section-home">
                 <h1>HBD Sayang! ✨</h1>
+                
                 <div class="cake-container">
                     <div class="cake">
-                        <div class="candle">
+                        <div class="candle-wrapper">
+                            <div class="wick"></div>
+                            <div class="candle-body"></div>
                             <div class="flame" id="lilin-api"></div>
                         </div>
                     </div>
                 </div>
-                <p id="teks-instruksi">Dibuat khusus buat kamu yang paling cantik/ganteng. Coba tiup lilinnya!</p>
-                <button class="music-btn" id="btn-tiup" onclick="tiupLilin()">Tiup Lilin 🎂</button>
+
+                <p id="teks-instruksi">Dibuat khusus buat kamu. Coba tiup lilinnya!</p>
+                
+                <div class="btn-group">
+                    <button class="action-btn" id="btn-tiup" onclick="tiupLilin()">Tiup Lilin 🎂</button>
+                    <button class="action-btn relight hidden" id="btn-nyala" onclick="nyalainLilin()">Nyalain Lagi 🔥</button>
+                </div>
             </div>
 
-            <div id="section-after" class="hidden">
-                <h2 style="color: var(--accent);">Yeay! HBD! 🎉</h2>
-                <p>Selamat ulang tahun ya sayang! Semoga bahagia terus sama aku, makin dewasa, dan semua mimpinya tercapai. I Love You! ❤️</p>
+            <div id="section-after-blow" class="hidden fade-in" style="margin-top: 20px;">
+                <h2 style="color: var(--accent); font-family: 'Pacifico', cursive;">Yeay! HBD! 🎉</h2>
+                <p>Selamat ulang tahun ya sayang! Semoga bahagia terus sama aku, makin dewasa, makin cantik/ganteng, dan semua mimpinya tercapai. I Love You so much! ❤️💍</p>
             </div>
 
-            <div id="section-msg" class="hidden">
-                <h2>Pesan Rahasia</h2>
-                <p>Kamu adalah kado terindah yang pernah aku punya. Makasih udah lahir ke dunia ya!</p>
-            </div>
-
-            <div id="section-gal" class="hidden">
-                <h2>Memories</h2>
-                <p>(Di sini bisa kamu isi link foto kalian berdua nanti bub)</p>
-            </div>
-
-            <div id="section-wish" class="hidden">
-                <h2>My Wish</h2>
-                <p>Semoga kita langgeng terus sampai nanti! 💍</p>
-            </div>
+            <div id="section-msg" class="hidden"><h2>Pesan Rahasia</h2><p>Kamu adalah kado terindah dalam hidupku. Makasih udah lahir ya!</p></div>
+            <div id="section-gal" class="hidden"><h2>Memories</h2><p>(Pasang foto kalian di sini nanti bub)</p></div>
+            <div id="section-wish" class="hidden"><h2>My Wish</h2><p>Semoga kita langgeng terus sampai nanti! ❤️</p></div>
         </div>
     </div>
 
@@ -199,30 +189,44 @@
         function toggleMusic() {
             if (audio.paused) {
                 audio.play();
-                document.querySelector('.music-btn').innerHTML = "⏸ Pause Musik";
+                document.getElementById('music-status').innerHTML = "⏸ Pause Musik";
             } else {
                 audio.pause();
-                document.querySelector('.music-btn').innerHTML = "🎵 Putar Musik";
+                document.getElementById('music-status').innerHTML = "🎵 Putar Musik";
             }
         }
 
         function tiupLilin() {
-            // Matikan api
+            // 1. Sembunyikan api (mati)
             document.getElementById('lilin-api').classList.add('hidden');
+            
+            // 2. Ganti tombol: Tiup hilang, Nyalain muncul
             document.getElementById('btn-tiup').classList.add('hidden');
-            document.getElementById('teks-instruksi').classList.add('hidden');
+            document.getElementById('btn-nyala').classList.remove('hidden');
             
-            // Munculkan ucapan
-            document.getElementById('section-after').classList.remove('hidden');
-            
-            // Efek Confetti (sederhana)
-            alert("Selamat Ulang Tahun Sayang! ❤️🎂");
+            // 3. Update instruksi & Tampilkan ucapan
+            document.getElementById('teks-instruksi').innerHTML = "Yeay! Make a wish! ❤️";
+            document.getElementById('section-after-blow').classList.remove('hidden');
         }
 
+        function nyalainLilin() {
+            // 1. Munculkan api kembali (nyala)
+            document.getElementById('lilin-api').classList.remove('hidden');
+            
+            // 2. Ganti tombol balik: Nyalain hilang, Tiup muncul
+            document.getElementById('btn-nyala').classList.add('hidden');
+            document.getElementById('btn-tiup').classList.remove('hidden');
+            
+            // 3. Reset instruksi & Sembunyikan ucapan
+            document.getElementById('teks-instruksi').innerHTML = "Dibuat khusus buat kamu. Coba tiup lilinnya!";
+            document.getElementById('section-after-blow').classList.add('hidden');
+        }
+
+        // Fungsi navigasi sidebar
         function showSection(name) {
-            // Sembunyikan semua
+            // Sembunyikan semua section konten
             document.getElementById('section-home').classList.add('hidden');
-            document.getElementById('section-after').classList.add('hidden');
+            document.getElementById('section-after-blow').classList.add('hidden');
             document.getElementById('section-msg').classList.add('hidden');
             document.getElementById('section-gal').classList.add('hidden');
             document.getElementById('section-wish').classList.add('hidden');
