@@ -7,8 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">
     <style>
         :root {
-            --pink-bg: #fdf2f8; 
-            --accent: #f472b6; 
+            --pink-bg: #fdf2f8;
+            --accent: #f472b6;
             --text-color: #4b5563;
             --flame-outer: #ff9f43;
             --flame-inner: #fff200;
@@ -21,10 +21,9 @@
             color: var(--text-color);
             overflow-x: hidden;
             background-image: radial-gradient(#fbcfe8 1px, transparent 1px);
-            background-size: 20px 20px; 
+            background-size: 20px 20px;
         }
 
-        /* --- Navigasi Samping --- */
         .sidebar {
             position: fixed; left: 15px; top: 50%;
             transform: translateY(-50%);
@@ -33,16 +32,15 @@
         }
 
         .side-btn {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255,255,255,0.9);
             border: 2px solid var(--accent);
             width: 50px; height: 50px;
             border-radius: 50%; cursor: pointer;
             font-size: 20px;
-            box-shadow: 0 4px 15px rgba(244, 114, 182, 0.2);
+            box-shadow: 0 4px 15px rgba(244,114,182,0.2);
             transition: 0.3s ease;
             display: flex; align-items: center; justify-content: center;
         }
-
         .side-btn:hover { background: var(--accent); color: white; transform: scale(1.1) translateY(-2px); }
 
         @media (max-width: 768px) {
@@ -50,18 +48,17 @@
                 left: 50%; top: auto; bottom: 20px;
                 transform: translateX(-50%);
                 flex-direction: row;
-                background: rgba(255, 255, 255, 0.9);
+                background: rgba(255,255,255,0.9);
                 padding: 10px 15px;
                 border-radius: 40px;
-                box-shadow: 0 4px 15px rgba(244, 114, 182, 0.3);
+                box-shadow: 0 4px 15px rgba(244,114,182,0.3);
                 gap: 10px;
             }
             .side-btn { width: 45px; height: 45px; font-size: 18px; }
-            .glass-card { margin-bottom: 90px !important; padding: 30px !important; }
+            .glass-card { margin-bottom: 90px !important; padding: 25px !important; }
             h1 { font-size: 28px !important; }
         }
 
-        /* --- Kontainer Utama --- */
         .main-content {
             display: flex; flex-direction: column;
             align-items: center; justify-content: center;
@@ -69,110 +66,137 @@
         }
 
         .glass-card {
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255,255,255,0.85);
             backdrop-filter: blur(12px);
             padding: 40px; border-radius: 30px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.05), border: 1px solid rgba(255,255,255,0.5);
-            max-width: 450px; width: 100%; position: relative;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            border: 1px solid rgba(255,255,255,0.5);
+            max-width: 460px; width: 100%; position: relative;
         }
 
-        h1 { font-family: 'Pacifico', cursive; color: var(--accent); margin-bottom: 5px; font-size: 32px; text-shadow: 2px 2px 4px rgba(244, 114, 182, 0.2); }
-        #teks-instruksi { font-size: 16px; margin-bottom: 30px; color: #6b7280; font-weight: 600;}
+        h1 { font-family: 'Pacifico', cursive; color: var(--accent); margin-bottom: 5px; font-size: 32px; text-shadow: 2px 2px 4px rgba(244,114,182,0.2); }
+        #teks-instruksi { font-size: 16px; margin-bottom: 30px; color: #6b7280; font-weight: 600; }
 
-        /* --- Tombol Aksi --- */
         .btn-group { display: flex; gap: 15px; justify-content: center; margin-top: 10px; }
         .action-btn {
             background: var(--accent); color: white; border: none; padding: 12px 28px;
             border-radius: 25px; cursor: pointer; font-family: 'Quicksand', sans-serif; font-weight: 700;
-            font-size: 16px; transition: all 0.3s ease; box-shadow: 0 8px 20px rgba(244, 114, 182, 0.3);
+            font-size: 16px; transition: all 0.3s ease; box-shadow: 0 8px 20px rgba(244,114,182,0.3);
         }
-        .action-btn:hover { background: #ec4899; transform: translateY(-3px); box-shadow: 0 10px 25px rgba(236, 72, 153, 0.4); }
-        .action-btn.relight { background: #fbbf24; box-shadow: 0 8px 20px rgba(251, 191, 36, 0.3); color: #78350f; } 
+        .action-btn:hover { background: #ec4899; transform: translateY(-3px); }
+        .action-btn.relight { background: #fbbf24; box-shadow: 0 8px 20px rgba(251,191,36,0.3); color: #78350f; }
         .action-btn.relight:hover { background: #f59e0b; transform: translateY(-3px); }
 
-        /* --- KUE ULANG TAHUN ESTETIK --- */
+        /* KUE */
         .cake-container { position: relative; margin: 80px 0 50px 0; display: flex; justify-content: center; z-index: 10; }
-        .plate { position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); width: 220px; height: 50px; background: #ffffff; border-radius: 50%; box-shadow: 0 15px 20px rgba(0,0,0,0.06), inset 0 -5px 10px rgba(0,0,0,0.02); z-index: -1; }
-        .cake { width: 170px; height: 110px; background: #fff4e6; border-radius: 15px 15px 10px 10px; position: relative; box-shadow: inset -10px -10px 20px rgba(0,0,0,0.03), 0 8px 15px rgba(0,0,0,0.05); }
+        .plate { position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); width: 220px; height: 50px; background: #ffffff; border-radius: 50%; box-shadow: 0 15px 20px rgba(0,0,0,0.06); z-index: -1; }
+        .cake { width: 170px; height: 110px; background: #fff4e6; border-radius: 15px 15px 10px 10px; position: relative; box-shadow: 0 8px 15px rgba(0,0,0,0.05); }
         .icing { position: absolute; top: 0; left: 0; width: 100%; height: 45px; background: #ffb8c6; border-radius: 15px 15px 0 0; }
-        .drip { position: absolute; background: #ffb8c6; border-radius: 0 0 20px 20px; box-shadow: 2px 2px 5px rgba(0,0,0,0.02); }
-        .d1 { width: 30px; height: 25px; left: 5px; top: 40px; } .d2 { width: 35px; height: 45px; left: 30px; top: 40px; } .d3 { width: 30px; height: 15px; left: 60px; top: 40px; } .d4 { width: 45px; height: 35px; left: 85px; top: 40px; } .d5 { width: 30px; height: 20px; left: 125px; top: 40px; } .d6 { width: 15px; height: 10px; left: 150px; top: 40px; border-radius: 0 0 10px 10px;}
+        .drip { position: absolute; background: #ffb8c6; border-radius: 0 0 20px 20px; }
+        .d1{width:30px;height:25px;left:5px;top:40px} .d2{width:35px;height:45px;left:30px;top:40px} .d3{width:30px;height:15px;left:60px;top:40px} .d4{width:45px;height:35px;left:85px;top:40px} .d5{width:30px;height:20px;left:125px;top:40px} .d6{width:15px;height:10px;left:150px;top:40px;border-radius:0 0 10px 10px}
         .candle-wrapper { position: absolute; top: -65px; left: 50%; transform: translateX(-50%); width: 20px; z-index: 5; }
-        .candle-body { width: 14px; height: 55px; background: repeating-linear-gradient(-45deg, #ffffff, #ffffff 6px, #ff9ff3 6px, #ff9ff3 12px); border-radius: 6px; position: absolute; left: 3px; box-shadow: 2px 2px 5px rgba(0,0,0,0.08); border: 1px solid rgba(255,255,255,0.8); }
+        .candle-body { width: 14px; height: 55px; background: repeating-linear-gradient(-45deg,#ffffff,#ffffff 6px,#ff9ff3 6px,#ff9ff3 12px); border-radius: 6px; position: absolute; left: 3px; box-shadow: 2px 2px 5px rgba(0,0,0,0.08); }
         .wick { width: 3px; height: 12px; background: #555; position: absolute; top: -10px; left: 8.5px; border-radius: 2px; }
         .flame { width: 18px; height: 30px; background-color: var(--flame-inner); border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%; position: absolute; top: -38px; left: 1px; box-shadow: 0 0 15px var(--flame-inner), 0 0 25px var(--flame-outer), 0 0 45px var(--flame-outer); transform-origin: bottom center; animation: flicker 0.3s ease-in-out infinite alternate; }
-        .flame::after { content: ''; width: 8px; height: 18px; background: rgba(255, 255, 255, 0.9); border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%; position: absolute; bottom: 3px; left: 5px; }
-        @keyframes flicker { 0% { transform: rotate(-2deg) scaleY(1.0); opacity: 0.9; } 25% { transform: rotate(1deg) scaleY(1.05); opacity: 1; } 50% { transform: rotate(-1deg) scaleY(0.95); opacity: 0.95; } 75% { transform: rotate(2deg) scaleY(1.02); opacity: 1; } 100% { transform: rotate(-1deg) scaleY(1.0); opacity: 0.9; } }
+        .flame::after { content: ''; width: 8px; height: 18px; background: rgba(255,255,255,0.9); border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%; position: absolute; bottom: 3px; left: 5px; }
+        @keyframes flicker { 0%{transform:rotate(-2deg) scaleY(1.0);opacity:0.9} 25%{transform:rotate(1deg) scaleY(1.05);opacity:1} 50%{transform:rotate(-1deg) scaleY(0.95);opacity:0.95} 75%{transform:rotate(2deg) scaleY(1.02);opacity:1} 100%{transform:rotate(-1deg) scaleY(1.0);opacity:0.9} }
 
-        /* --- MUSIC PLAYER ESTETIK --- */
-        .music-player-card { background: rgba(255, 182, 193, 0.2); border-radius: 20px; padding: 25px; margin-top: 20px; border: 1px solid rgba(244, 114, 182, 0.3); }
+        /* MUSIK */
+        .music-player-card { background: rgba(255,182,193,0.2); border-radius: 20px; padding: 25px; margin-top: 20px; border: 1px solid rgba(244,114,182,0.3); }
         .track-title { font-size: 18px; font-weight: 700; color: var(--accent); margin-bottom: 5px; }
         .track-artist { font-size: 14px; color: #6b7280; margin-bottom: 20px; }
-        .play-btn-large { background: var(--accent); color: white; border: none; width: 65px; height: 65px; border-radius: 50%; font-size: 24px; cursor: pointer; box-shadow: 0 4px 15px rgba(244, 114, 182, 0.4); display: flex; align-items: center; justify-content: center; margin: 0 auto; transition: 0.3s; }
+        .play-btn-large { background: var(--accent); color: white; border: none; width: 65px; height: 65px; border-radius: 50%; font-size: 24px; cursor: pointer; box-shadow: 0 4px 15px rgba(244,114,182,0.4); display: flex; align-items: center; justify-content: center; margin: 0 auto; transition: 0.3s; }
         .play-btn-large:hover { transform: scale(1.1); background: #ec4899; }
         .progress-container { width: 100%; height: 8px; background: #ffe4e1; border-radius: 5px; margin: 20px 0 10px 0; overflow: hidden; cursor: pointer; }
         .progress-bar-fill { height: 100%; width: 0%; background: var(--accent); border-radius: 5px; transition: width 0.1s linear; pointer-events: none; }
-        .time-info { display: flex; justify-content: space-between; font-size: 12px; color: #9ca3af; font-weight: 600; pointer-events: none; }
+        .time-info { display: flex; justify-content: space-between; font-size: 12px; color: #9ca3af; font-weight: 600; }
 
-        /* --- GALLERY VIEWER ESTETIK --- */
-        .gallery-container { position: relative; margin-top: 20px; }
+        /* GALERI */
+        .gallery-container { position: relative; margin-top: 10px; }
+
         .gallery-count {
-            position: absolute; top: -15px; right: 10px; background: var(--accent); color: white; 
-            padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 14px; 
-            box-shadow: 0 4px 10px rgba(244, 114, 182, 0.3); z-index: 10;
+            display: inline-block;
+            background: var(--accent); color: white;
+            padding: 5px 16px; border-radius: 20px; font-weight: bold; font-size: 14px;
+            box-shadow: 0 4px 10px rgba(244,114,182,0.3);
+            margin-bottom: 14px;
         }
-        
-        /* Box Foto */
+
+        /* Polaroid foto */
         .polaroid {
-            background: white; padding: 15px 15px 25px 15px; border-radius: 12px; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08); transform: rotate(-2deg); 
-            transition: 0.3s ease; margin: 0 auto 20px; max-width: 260px;
+            background: white; padding: 15px 15px 20px 15px; border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08); transform: rotate(-2deg);
+            transition: 0.3s ease; margin: 0 auto 8px; max-width: 270px;
+            position: relative;
         }
         .polaroid:hover { transform: rotate(0deg) scale(1.02); box-shadow: 0 15px 30px rgba(0,0,0,0.12); }
-        .polaroid img { width: 100%; height: 220px; object-fit: cover; border-radius: 8px; border: 1px solid #f3f4f6; }
-        .polaroid-text { font-family: 'Quicksand', sans-serif; font-weight: 600; color: #4b5563; margin-top: 15px; font-size: 15px; }
-        
-        /* Box Video */
-        #video-display { background: black; padding: 10px; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        #video-display video { border-radius: 8px; width: 100%; max-height: 250px; }
-        #video-text { font-family: 'Quicksand', sans-serif; font-weight: 600; color: white; margin-top: 10px; font-size: 15px; }
 
-        /* Tombol Bawah Galeri */
-        .gallery-controls { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .gallery-btn { 
-            background: white; color: var(--accent); border: 2px solid var(--accent); 
-            padding: 8px 15px; border-radius: 20px; font-weight: bold; cursor: pointer; 
-            transition: 0.3s; font-size: 13px; font-family: 'Quicksand'; box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        .photo-display {
+            width: 100%; height: 220px; object-fit: cover;
+            border-radius: 8px; border: 1px solid #f3f4f6;
+            display: block;
+        }
+
+        .polaroid-text { margin-top: 12px; font-family: 'Quicksand'; font-weight: 600; color: #4b5563; font-size: 14px; }
+
+        /* Video box slide 20 */
+        .video-slide {
+            background: #1a1a2e; padding: 12px; border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            max-width: 270px; margin: 0 auto 8px;
+        }
+        .video-slide video { border-radius: 8px; width: 100%; max-height: 230px; display: block; }
+
+        /* Tombol galeri */
+        .gallery-controls { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+        .gallery-btn {
+            background: white; color: var(--accent); border: 2px solid var(--accent);
+            padding: 7px 14px; border-radius: 20px; font-weight: bold; cursor: pointer;
+            transition: 0.3s; font-size: 13px; font-family: 'Quicksand';
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
         .gallery-btn:hover { background: var(--accent); color: white; transform: translateY(-2px); }
 
-        /* --- Transisi --- */
+        /* Thumbnail strip */
+        .thumb-strip {
+            display: flex; gap: 6px; overflow-x: auto; padding: 6px 2px;
+            margin-bottom: 10px; scrollbar-width: thin;
+            scrollbar-color: var(--accent) transparent;
+            justify-content: center; flex-wrap: wrap;
+        }
+        .thumb {
+            width: 36px; height: 36px; border-radius: 8px; object-fit: cover;
+            border: 2px solid transparent; cursor: pointer; transition: 0.2s;
+            flex-shrink: 0;
+        }
+        .thumb.active { border-color: var(--accent); transform: scale(1.1); }
+        .thumb-empty {
+            width: 36px; height: 36px; border-radius: 8px;
+            background: #fce7f3; border: 2px dashed #f9a8d4;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            font-size: 14px; flex-shrink: 0; transition: 0.2s; color: #be185d;
+        }
+        .thumb-video {
+            width: 36px; height: 36px; border-radius: 8px;
+            background: #2d1b69; border: 2px solid #7c3aed;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 16px; flex-shrink: 0; cursor: pointer;
+        }
+        .thumb-video.active { border-color: #f9a8d4; transform: scale(1.1); }
+
+        /* Transisi */
         .hidden { display: none !important; }
         .fade-in { animation: fadeIn 0.8s ease-out forwards; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
 
-        /* =========================================
-           KODE KHUSUS UNTUK FITUR CETAK (PRINT)
-           ========================================= */
         @media print {
-            /* Sembunyikan semua elemen di layar saat cetak */
             body * { visibility: hidden; }
-            
-            /* Sembunyikan background dan atur ulang layout */
             body, html { background: white !important; margin: 0; padding: 0; }
-            .sidebar, .gallery-controls, .gallery-count, #video-display, audio { display: none !important; }
-
-            /* Tampilkan HANYA kotak polaroid dan isinya */
-            #gallery-display-polaroid, #gallery-display-polaroid * { visibility: visible; }
-            
-            /* Atur posisi polaroid biar pas di tengah kertas cetak */
-            #gallery-display-polaroid {
-                position: absolute;
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%, -50%) !important; /* Lurusin foto, hilangkan efek miring */
-                width: 300px;
-                box-shadow: none !important; /* Hilangkan bayangan biar irit tinta */
+            .polaroid, .polaroid * { visibility: visible; }
+            .polaroid {
+                position: fixed; left: 50%; top: 50%;
+                transform: translate(-50%, -50%) !important;
+                width: 300px; box-shadow: none !important;
                 border: 1px solid #ddd;
             }
         }
@@ -181,8 +205,10 @@
 <body>
 
     <audio id="bg-music" loop>
-        <source src="play ini yaaa.mp3" type="audio/mpeg">
+        <source src="Play-ini-yaaa.mp3" type="audio/mpeg">
     </audio>
+
+
 
     <div class="sidebar">
         <button class="side-btn" onclick="showSection('message')" title="Pesan">💌</button>
@@ -194,20 +220,22 @@
 
     <div class="main-content">
         <div class="glass-card fade-in" id="main-card">
-            
+
+            <!-- PESAN -->
             <div id="section-msg" class="fade-in">
-                <h1 style="font-size: 38px;">Happy Birthday! ✨</h1>
-                <h2 style="font-family: 'Quicksand'; color: var(--text-color); font-size: 20px; margin-top: 0;">Pesan Spesial Buat Kamu 💌</h2>
-                <p style="line-height: 1.6; font-size: 16px; margin-top: 20px;">
+                <h1 style="font-size:38px">Happy Birthday! ✨</h1>
+                <h2 style="font-family:'Quicksand';color:var(--text-color);font-size:20px;margin-top:0">Pesan Spesial Buat Kamu 💌</h2>
+                <p style="line-height:1.6;font-size:16px;margin-top:20px">
                     Cuma mau bilang, makasih ya udah lahir ke dunia ini dan jadi bagian terbaik dari hidupku. You mean the world to me! ❤️
                 </p>
-                <p style="color: var(--accent); font-weight: bold; margin-top: 30px; font-size: 14px;">
+                <p style="color:var(--accent);font-weight:bold;margin-top:30px;font-size:14px">
                     Psst.. Coba buka satu-satu menu di samping kiri ya!
                 </p>
             </div>
 
+            <!-- MUSIK -->
             <div id="section-music" class="hidden fade-in">
-                <h2 style="font-family: 'Pacifico'; color: var(--accent); font-size: 28px; margin-top: 0;">Our Soundtrack 🎧</h2>
+                <h2 style="font-family:'Pacifico';color:var(--accent);font-size:28px;margin-top:0">Our Soundtrack 🎧</h2>
                 <div class="music-player-card">
                     <div class="track-title">Lagu Spesial Buat Kita</div>
                     <div class="track-artist">Dengerin ya sayang ✨</div>
@@ -222,14 +250,15 @@
                 </div>
             </div>
 
+            <!-- KUE -->
             <div id="section-cake" class="hidden">
-                <h2 style="font-family: 'Pacifico'; color: var(--accent); font-size: 28px; margin-top: 0;">Make a Wish! 🎂</h2>
+                <h2 style="font-family:'Pacifico';color:var(--accent);font-size:28px;margin-top:0">Make a Wish! 🎂</h2>
                 <div class="cake-container">
                     <div class="plate"></div>
                     <div class="cake">
                         <div class="icing"></div>
-                        <div class="drip d1"></div> <div class="drip d2"></div> <div class="drip d3"></div>
-                        <div class="drip d4"></div> <div class="drip d5"></div> <div class="drip d6"></div>
+                        <div class="drip d1"></div><div class="drip d2"></div><div class="drip d3"></div>
+                        <div class="drip d4"></div><div class="drip d5"></div><div class="drip d6"></div>
                         <div class="candle-wrapper">
                             <div class="wick"></div><div class="candle-body"></div><div class="flame" id="lilin-api"></div>
                         </div>
@@ -242,49 +271,57 @@
                 </div>
             </div>
 
-            <div id="section-after-blow" class="hidden fade-in" style="margin-top: 10px;">
-                <h2 style="color: var(--accent); font-family: 'Pacifico', cursive; font-size: 28px;">Yeay! HBD Sayang! 🎉</h2>
-                <p style="line-height: 1.6; font-size: 15px;">Selamat ulang tahun ya! Semoga hari-harimu selalu seindah kue ini, makin dewasa, bahagia terus sama aku. I Love You so much! ❤️</p>
+            <div id="section-after-blow" class="hidden fade-in" style="margin-top:10px">
+                <h2 style="color:var(--accent);font-family:'Pacifico',cursive;font-size:28px">Yeay! HBD Sayang! 🎉</h2>
+                <p style="line-height:1.6;font-size:15px">Selamat ulang tahun ya! Semoga hari-harimu selalu seindah kue ini, makin dewasa, bahagia terus sama aku. I Love You so much! ❤️</p>
             </div>
 
+            <!-- GALERI -->
             <div id="section-gal" class="hidden fade-in">
-                <h2 style="font-family: 'Pacifico'; color: var(--accent); margin-top: 0;">Our Memories 📸</h2>
-                
-                <div class="gallery-container">
-                    <div class="gallery-count" id="photo-count">1/4</div>
+                <h2 style="font-family:'Pacifico';color:var(--accent);margin-top:0;margin-bottom:6px">Our Memories 📸</h2>
 
-                    <div class="polaroid" id="gallery-display-polaroid">
-                        <img src="" id="current-photo-img" alt="Memory">
+                <div class="gallery-container">
+                    <div class="gallery-count" id="photo-count">1 / 20</div>
+
+                    <!-- Thumbnail strip -->
+                    <div class="thumb-strip" id="thumb-strip"></div>
+
+                    <!-- Tampilan foto (slide 1-19) -->
+                    <div class="polaroid" id="gallery-photo-box">
+                        <img src="" id="current-photo-img" class="photo-display" alt="Memory">
                         <div class="polaroid-text" id="current-photo-text">Memuat...</div>
                     </div>
 
-                    <div id="video-display" class="hidden">
+                    <!-- Tampilan video (slide 20) -->
+                    <div class="video-slide hidden" id="gallery-video-box">
                         <video id="gallery-video" controls>
-                            <source src="" type="video/mp4">
+                            <source src="video1.mp4" type="video/mp4">
                         </video>
-                        <div id="video-text">Video text</div>
+                        <div id="video-text" style="font-family:'Quicksand';font-weight:600;color:#e2e8f0;font-size:14px;margin-top:8px">Video spesial kita 🎥</div>
                     </div>
 
+                    <!-- Kontrol galeri -->
                     <div class="gallery-controls">
-                        <button class="gallery-btn" onclick="changeSlide(-1)">&lt; Sebelumnya</button>
-                        <button class="gallery-btn" onclick="changeSlide(1)">Berikutnya &gt;</button>
-                        <button class="gallery-btn" id="btn-toggle-media" onclick="toggleMedia()" style="border-color: #3b82f6; color: #3b82f6;">Lihat Video</button>
-                        <button class="gallery-btn" onclick="printPhoto()">Cetak</button>
+                        <button class="gallery-btn" onclick="changeSlide(-1)">← Prev</button>
+                        <button class="gallery-btn" onclick="changeSlide(1)">Next →</button>
+                        <button class="gallery-btn" onclick="printCurrentPhoto()">🖨 Cetak</button>
                     </div>
                 </div>
             </div>
-            
+
+            <!-- HARAPAN -->
             <div id="section-wish" class="hidden fade-in">
-                <h2 style="font-family: 'Pacifico'; color: var(--accent);">My Wish 🌟</h2>
+                <h2 style="font-family:'Pacifico';color:var(--accent)">My Wish 🌟</h2>
                 <p>Semoga kita bisa merayakan ulang tahun kamu yang berikutnya, dan berikutnya lagi sama-sama. 💍</p>
             </div>
+
         </div>
     </div>
 
     <script>
-        // ==========================================
-        // 1. LOGIKA PEMUTAR MUSIK
-        // ==========================================
+        // ============================
+        // MUSIK
+        // ============================
         const audio = document.getElementById("bg-music");
         const playBtnUI = document.getElementById("play-btn-ui");
         const progressFill = document.getElementById("music-progress");
@@ -292,31 +329,27 @@
         let isPlaying = false;
 
         function toggleMusic() {
-            if (isPlaying) { audio.pause(); playBtnUI.innerHTML = "▶"; isPlaying = false; } 
+            if (isPlaying) { audio.pause(); playBtnUI.innerHTML = "▶"; isPlaying = false; }
             else { audio.play(); playBtnUI.innerHTML = "⏸"; isPlaying = true; }
         }
 
         audio.addEventListener('timeupdate', () => {
-            if(audio.duration) {
-                const progressPercent = (audio.currentTime / audio.duration) * 100;
-                progressFill.style.width = progressPercent + "%";
-                let currentMins = Math.floor(audio.currentTime / 60);
-                let currentSecs = Math.floor(audio.currentTime - currentMins * 60);
-                if(currentSecs < 10) { currentSecs = "0" + currentSecs; }
-                currentTimeText.innerHTML = currentMins + ":" + currentSecs;
+            if (audio.duration) {
+                progressFill.style.width = (audio.currentTime / audio.duration * 100) + "%";
+                let m = Math.floor(audio.currentTime / 60);
+                let s = Math.floor(audio.currentTime % 60);
+                currentTimeText.innerHTML = m + ":" + (s < 10 ? "0" + s : s);
             }
         });
 
-        function seekMusic(event) {
-            const container = document.getElementById("progress-container");
-            const width = container.clientWidth;
-            const clickX = event.offsetX;
-            audio.currentTime = (clickX / width) * audio.duration;
+        function seekMusic(e) {
+            const c = document.getElementById("progress-container");
+            audio.currentTime = (e.offsetX / c.clientWidth) * audio.duration;
         }
 
-        // ==========================================
-        // 2. LOGIKA KUE
-        // ==========================================
+        // ============================
+        // KUE
+        // ============================
         function tiupLilin() {
             document.getElementById('lilin-api').classList.add('hidden');
             document.getElementById('btn-tiup').classList.add('hidden');
@@ -333,133 +366,140 @@
             document.getElementById('section-after-blow').classList.add('hidden');
         }
 
-        // ==========================================
-        // 3. LOGIKA GALLERY (Foto, Video & Cetak)
-        // ==========================================
-        
-        // Bub isi datanya di sini ya! 
-        const galleryData = [
-            { type: "image", file: "foto1.jpg", text: "Momen kita ke-1 ❤️" },
-            { type: "image", file: "foto2.jpg", text: "Senyum paling manis!" },
-            { type: "image", file: "foto3.jpg", text: "Suka banget foto ini ✨" },
-            { type: "image", file: "foto1.jpg", text: "Momen kita ke-1 ❤️" },
-            { type: "image", file: "foto2.jpg", text: "Senyum paling manis!" },
-            { type: "image", file: "foto3.jpg", text: "Suka banget foto ini ✨" },
-            { type: "image", file: "foto1.jpg", text: "Momen kita ke-1 ❤️" },
-            { type: "image", file: "foto2.jpg", text: "Senyum paling manis!" },
-            { type: "image", file: "foto3.jpg", text: "Suka banget foto ini ✨" },
-            { type: "image", file: "foto1.jpg", text: "Momen kita ke-1 ❤️" },
-            { type: "image", file: "foto2.jpg", text: "Senyum paling manis!" },
-            { type: "image", file: "foto3.jpg", text: "Suka banget foto ini ✨" },
-            { type: "image", file: "foto1.jpg", text: "Momen kita ke-1 ❤️" },
-            { type: "image", file: "foto2.jpg", text: "Senyum paling manis!" },
-            { type: "image", file: "foto3.jpg", text: "Suka banget foto ini ✨" },
-            { type: "image", file: "foto1.jpg", text: "Momen kita ke-1 ❤️" },
-            { type: "image", file: "foto2.jpg", text: "Senyum paling manis!" },
-            { type: "image", file: "foto3.jpg", text: "Suka banget foto ini ✨" },
-            { type: "video", file: "video1.mp4", text: "Video spesial kita 🎥" }
-        ];
+        // ============================
+        // GALERI — DATA STATIC FILES
+        // ============================
+        const galleryData = [];
+        for (let i = 1; i <= 19; i++) {
+            galleryData.push({
+                type: "image",
+                file: "foto" + i + ".jpeg",
+                text: "Momen kita ke-" + i + " ❤️"
+            });
+        }
+        galleryData.push({ type: "video", file: "video1.mp4", text: "Video spesial kita 🎥" });
 
         let currentIndex = 0;
 
-        function updateGalleryDisplay() {
-            const currentItem = galleryData[currentIndex];
-            const polaroid = document.getElementById('gallery-display-polaroid');
-            const videoDisplay = document.getElementById('video-display');
-            const videoEl = document.getElementById('gallery-video');
-            const toggleBtn = document.getElementById('btn-toggle-media');
-            
-            document.getElementById('photo-count').innerHTML = (currentIndex + 1) + "/" + galleryData.length;
-
-            if (currentItem.type === "image") {
-                polaroid.classList.remove('hidden');
-                videoDisplay.classList.add('hidden');
-                
-                document.getElementById('current-photo-img').src = currentItem.file;
-                document.getElementById('current-photo-text').innerHTML = currentItem.text;
-                
-                videoEl.pause(); 
-                
-                toggleBtn.innerHTML = "Lihat Video";
-                toggleBtn.style.borderColor = "#3b82f6";
-                toggleBtn.style.color = "#3b82f6";
-                
-            } else if (currentItem.type === "video") {
-                polaroid.classList.add('hidden');
-                videoDisplay.classList.remove('hidden');
-                
-                if(!videoEl.src.endsWith(currentItem.file)) {
-                    videoEl.src = currentItem.file;
-                    videoEl.load();
+        // ============================
+        // BUILD THUMBNAIL STRIP
+        // ============================
+        function buildThumbs() {
+            const strip = document.getElementById('thumb-strip');
+            strip.innerHTML = '';
+            galleryData.forEach(function(item, i) {
+                let el;
+                if (item.type === "video") {
+                    el = document.createElement('div');
+                    el.className = 'thumb-video' + (i === currentIndex ? ' active' : '');
+                    el.textContent = '🎬';
+                    el.title = 'Video (slide 20)';
+                } else {
+                    el = document.createElement('img');
+                    el.className = 'thumb' + (i === currentIndex ? ' active' : '');
+                    el.src = item.file;
+                    el.alt = 'Foto ' + (i + 1);
+                    el.onerror = function() {
+                        // Kalau foto belum ada, tampilkan fallback div
+                        var fb = document.createElement('div');
+                        fb.className = 'thumb-empty' + (i === currentIndex ? ' active' : '');
+                        fb.textContent = i + 1;
+                        fb.title = 'Foto ' + (i + 1);
+                        fb.onclick = function() { goToSlide(i); };
+                        strip.replaceChild(fb, this);
+                    };
                 }
-                document.getElementById('video-text').innerHTML = currentItem.text;
-                
-                toggleBtn.innerHTML = "Lihat Foto";
-                toggleBtn.style.borderColor = "#ec4899"; 
-                toggleBtn.style.color = "#ec4899";
+                el.onclick = function() { goToSlide(i); };
+                strip.appendChild(el);
+            });
+        }
+
+        // ============================
+        // TAMPILKAN SLIDE
+        // ============================
+        function updateGalleryDisplay() {
+            const item = galleryData[currentIndex];
+            document.getElementById('photo-count').textContent = (currentIndex + 1) + " / " + galleryData.length;
+
+            const photoBox = document.getElementById('gallery-photo-box');
+            const videoBox = document.getElementById('gallery-video-box');
+
+            if (item.type === "image") {
+                photoBox.classList.remove('hidden');
+                videoBox.classList.add('hidden');
+
+                const img = document.getElementById('current-photo-img');
+                img.src = item.file;
+                document.getElementById('current-photo-text').textContent = item.text;
+
+            } else {
+                photoBox.classList.add('hidden');
+                videoBox.classList.remove('hidden');
+
+                const vid = document.getElementById('gallery-video');
+                if (!vid.src.endsWith(item.file)) {
+                    vid.src = item.file;
+                    vid.load();
+                }
+                document.getElementById('video-text').textContent = item.text;
+            }
+
+            buildThumbs();
+
+            // Scroll thumbnail aktif ke tengah
+            const strip = document.getElementById('thumb-strip');
+            const activeEl = strip.children[currentIndex];
+            if (activeEl) {
+                activeEl.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
             }
         }
 
-        function changeSlide(direction) {
-            currentIndex += direction;
+        function changeSlide(dir) {
+            currentIndex += dir;
             if (currentIndex < 0) currentIndex = galleryData.length - 1;
             if (currentIndex >= galleryData.length) currentIndex = 0;
             updateGalleryDisplay();
         }
 
-        function toggleMedia() {
-            const currentItem = galleryData[currentIndex];
-            if (currentItem.type === "image") {
-                const videoIndex = galleryData.findIndex(item => item.type === "video");
-                if (videoIndex !== -1) {
-                    currentIndex = videoIndex;
-                    updateGalleryDisplay();
-                } else {
-                    alert("Belum ada video yang dimasukin ke kodingan, bub!");
-                }
-            } else {
-                currentIndex = 0;
-                updateGalleryDisplay();
-            }
+        function goToSlide(idx) {
+            currentIndex = idx;
+            updateGalleryDisplay();
         }
 
-        // FUNGSI CETAK FOTO
-        function printPhoto() {
-            const currentItem = galleryData[currentIndex];
-            
-            // Cek kalau user nyoba nge-print video
-            if (currentItem.type === "video") {
-                alert("Video nggak bisa dicetak bub, coba geser ke foto dulu ya! 🎥❌");
-            } else {
-                // Kalau foto, panggil fitur print bawaan browser
-                window.print();
+        // ============================
+        // CETAK FOTO
+        // ============================
+        function printCurrentPhoto() {
+            if (galleryData[currentIndex].type === "video") {
+                alert("Video nggak bisa dicetak bub, geser ke foto dulu ya! 🎥❌");
+                return;
             }
+            window.print();
         }
 
-        window.addEventListener('DOMContentLoaded', () => { updateGalleryDisplay(); });
-
-        // ==========================================
-        // 4. LOGIKA NAVIGASI MENU
-        // ==========================================
+        // ============================
+        // NAVIGASI MENU
+        // ============================
         function showSection(name) {
-            document.getElementById('section-msg').classList.add('hidden');
-            document.getElementById('section-music').classList.add('hidden');
-            document.getElementById('section-cake').classList.add('hidden');
-            document.getElementById('section-after-blow').classList.add('hidden');
-            document.getElementById('section-gal').classList.add('hidden');
-            document.getElementById('section-wish').classList.add('hidden');
+            ['section-msg','section-music','section-cake','section-after-blow','section-gal','section-wish']
+                .forEach(id => document.getElementById(id).classList.add('hidden'));
 
-            if(name === 'message') document.getElementById('section-msg').classList.remove('hidden');
-            if(name === 'music') document.getElementById('section-music').classList.remove('hidden');
-            if(name === 'cake') {
+            if (name === 'message') document.getElementById('section-msg').classList.remove('hidden');
+            if (name === 'music') document.getElementById('section-music').classList.remove('hidden');
+            if (name === 'cake') {
                 document.getElementById('section-cake').classList.remove('hidden');
-                if(document.getElementById('btn-tiup').classList.contains('hidden')) {
+                if (document.getElementById('btn-tiup').classList.contains('hidden')) {
                     document.getElementById('section-after-blow').classList.remove('hidden');
                 }
             }
-            if(name === 'gallery') document.getElementById('section-gal').classList.remove('hidden');
-            if(name === 'wish') document.getElementById('section-wish').classList.remove('hidden');
+            if (name === 'gallery') document.getElementById('section-gal').classList.remove('hidden');
+            if (name === 'wish') document.getElementById('section-wish').classList.remove('hidden');
         }
+
+        // Init
+        window.addEventListener('DOMContentLoaded', () => {
+            updateGalleryDisplay();
+        });
     </script>
 </body>
 </html>
