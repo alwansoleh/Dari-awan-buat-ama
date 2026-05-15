@@ -24,17 +24,16 @@
             background-size: 20px 20px; 
         }
 
-        /* --- Navigasi Samping (4 Tombol) --- */
+        /* --- Navigasi (Responsif) --- */
         .sidebar {
             position: fixed; left: 15px; top: 50%;
             transform: translateY(-50%);
             display: flex; flex-direction: column; gap: 15px;
-            z-index: 100;
+            z-index: 9999; /* Pastikan selalu paling atas */
         }
 
         .side-btn {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(5px);
+            background: rgba(255, 255, 255, 0.9);
             border: 2px solid var(--accent);
             width: 50px; height: 50px;
             border-radius: 50%; cursor: pointer;
@@ -45,6 +44,32 @@
         }
 
         .side-btn:hover { background: var(--accent); color: white; transform: scale(1.1) translateY(-2px); }
+
+        /* Control Musik */
+        .music-control { position: fixed; bottom: 20px; right: 20px; z-index: 9999; }
+        .music-btn-small { background: white; border: 2px solid var(--accent); color: var(--accent); border-radius: 20px; padding: 8px 15px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: 0.3s; font-family: 'Quicksand'; }
+        .music-btn-small:hover { background: var(--accent); color: white; }
+
+        /* --- Khusus Tampilan HP (Mobile) --- */
+        @media (max-width: 768px) {
+            .sidebar {
+                left: 50%; top: auto; bottom: 20px;
+                transform: translateX(-50%);
+                flex-direction: row;
+                background: rgba(255, 255, 255, 0.9);
+                padding: 10px 20px;
+                border-radius: 40px;
+                box-shadow: 0 4px 15px rgba(244, 114, 182, 0.3);
+            }
+            .music-control {
+                bottom: auto; top: 20px; right: 20px;
+            }
+            .glass-card {
+                margin-bottom: 80px !important; /* Biar ngga nabrak tombol navigasi di bawah */
+                padding: 30px !important;
+            }
+            h1 { font-size: 28px !important; }
+        }
 
         /* --- Kontainer Utama --- */
         .main-content {
@@ -66,7 +91,7 @@
         h1 { font-family: 'Pacifico', cursive; color: var(--accent); margin-bottom: 5px; font-size: 32px; text-shadow: 2px 2px 4px rgba(244, 114, 182, 0.2); }
         #teks-instruksi { font-size: 16px; margin-bottom: 30px; color: #6b7280; font-weight: 600;}
 
-        /* --- Tombol Utama --- */
+        /* --- Tombol Aksi (Tiup Lilin) --- */
         .btn-group { display: flex; gap: 15px; justify-content: center; margin-top: 10px; }
 
         .action-btn {
@@ -108,14 +133,10 @@
             100% { transform: rotate(-1deg) scaleY(1.0); opacity: 0.9; }
         }
 
-        /* --- Transisi dan Utility --- */
+        /* --- Transisi --- */
         .hidden { display: none !important; }
         .fade-in { animation: fadeIn 0.8s ease-out forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        
-        .music-control { position: fixed; bottom: 20px; right: 20px; z-index: 100; }
-        .music-btn-small { background: white; border: 2px solid var(--accent); color: var(--accent); border-radius: 20px; padding: 8px 15px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: 0.3s; font-family: 'Quicksand'; }
-        .music-btn-small:hover { background: var(--accent); color: white; }
     </style>
 </head>
 <body>
@@ -144,7 +165,7 @@
                     Cuma mau bilang, makasih ya udah lahir ke dunia ini dan jadi bagian terbaik dari hidupku. You mean the world to me! ❤️
                 </p>
                 <p style="color: var(--accent); font-weight: bold; margin-top: 30px; font-size: 14px;">
-                    Psst.. Coba klik tombol kue (🎂) di sebelah kiri deh!
+                    Psst.. Coba klik tombol kue (🎂) di menu navigasi deh!
                 </p>
             </div>
 
@@ -225,12 +246,30 @@
         }
 
         function showSection(name) {
-            // Sembunyikan semuanya dulu
+            // 1. Sembunyikan semuanya
             document.getElementById('section-msg').classList.add('hidden');
             document.getElementById('section-cake').classList.add('hidden');
             document.getElementById('section-after-blow').classList.add('hidden');
             document.getElementById('section-gal').classList.add('hidden');
             document.getElementById('section-wish').classList.add('hidden');
 
-            // Tampilkan sesuai tombol yang ditekan
+            // 2. Tampilkan yang dipencet
             if(name === 'message') {
+                document.getElementById('section-msg').classList.remove('hidden');
+            }
+            else if(name === 'cake') {
+                document.getElementById('section-cake').classList.remove('hidden');
+                if(document.getElementById('btn-tiup').classList.contains('hidden')) {
+                    document.getElementById('section-after-blow').classList.remove('hidden');
+                }
+            }
+            else if(name === 'gallery') {
+                document.getElementById('section-gal').classList.remove('hidden');
+            }
+            else if(name === 'wish') {
+                document.getElementById('section-wish').classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
