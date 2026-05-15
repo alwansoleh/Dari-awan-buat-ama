@@ -150,12 +150,38 @@
         .hidden { display: none !important; }
         .fade-in { animation: fadeIn 0.8s ease-out forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* =========================================
+           KODE KHUSUS UNTUK FITUR CETAK (PRINT)
+           ========================================= */
+        @media print {
+            /* Sembunyikan semua elemen di layar saat cetak */
+            body * { visibility: hidden; }
+            
+            /* Sembunyikan background dan atur ulang layout */
+            body, html { background: white !important; margin: 0; padding: 0; }
+            .sidebar, .gallery-controls, .gallery-count, #video-display, audio { display: none !important; }
+
+            /* Tampilkan HANYA kotak polaroid dan isinya */
+            #gallery-display-polaroid, #gallery-display-polaroid * { visibility: visible; }
+            
+            /* Atur posisi polaroid biar pas di tengah kertas cetak */
+            #gallery-display-polaroid {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%) !important; /* Lurusin foto, hilangkan efek miring */
+                width: 300px;
+                box-shadow: none !important; /* Hilangkan bayangan biar irit tinta */
+                border: 1px solid #ddd;
+            }
+        }
     </style>
 </head>
 <body>
 
     <audio id="bg-music" loop>
-        <source src="Play ini yaaa.mp3" type="audio/mpeg">
+        <source src="play ini yaaa.mp3" type="audio/mpeg">
     </audio>
 
     <div class="sidebar">
@@ -308,13 +334,12 @@
         }
 
         // ==========================================
-        // 3. LOGIKA GALLERY (Foto & Video Gabung)
+        // 3. LOGIKA GALLERY (Foto, Video & Cetak)
         // ==========================================
         
         // Bub isi datanya di sini ya! 
-        // type: "image" untuk foto, type: "video" untuk video
         const galleryData = [
-            { type: "image", file: "foto1.jpeg", text: "First time kita foto bareng ❤️" },
+            { type: "image", file: "foto1.jpg", text: "Momen kita ke-1 ❤️" },
             { type: "image", file: "foto2.jpg", text: "Senyum paling manis!" },
             { type: "image", file: "foto3.jpg", text: "Suka banget foto ini ✨" },
             { type: "video", file: "video1.mp4", text: "Video spesial kita 🎥" }
@@ -329,58 +354,47 @@
             const videoEl = document.getElementById('gallery-video');
             const toggleBtn = document.getElementById('btn-toggle-media');
             
-            // Update Nomor Halaman
             document.getElementById('photo-count').innerHTML = (currentIndex + 1) + "/" + galleryData.length;
 
             if (currentItem.type === "image") {
-                // Tampilkan Foto, Sembunyikan Video Player
                 polaroid.classList.remove('hidden');
                 videoDisplay.classList.add('hidden');
                 
                 document.getElementById('current-photo-img').src = currentItem.file;
                 document.getElementById('current-photo-text').innerHTML = currentItem.text;
                 
-                videoEl.pause(); // Matiin video kalau lagi jalan
+                videoEl.pause(); 
                 
-                // Set Tombol Toggle ke mode 'Lihat Video'
                 toggleBtn.innerHTML = "Lihat Video";
                 toggleBtn.style.borderColor = "#3b82f6";
                 toggleBtn.style.color = "#3b82f6";
                 
             } else if (currentItem.type === "video") {
-                // Tampilkan Video Player, Sembunyikan Foto
                 polaroid.classList.add('hidden');
                 videoDisplay.classList.remove('hidden');
                 
-                // Muat video baru
                 if(!videoEl.src.endsWith(currentItem.file)) {
                     videoEl.src = currentItem.file;
                     videoEl.load();
                 }
                 document.getElementById('video-text').innerHTML = currentItem.text;
                 
-                // Set Tombol Toggle ke mode 'Lihat Foto'
                 toggleBtn.innerHTML = "Lihat Foto";
-                toggleBtn.style.borderColor = "#ec4899"; // Ganti warna pink biar beda
+                toggleBtn.style.borderColor = "#ec4899"; 
                 toggleBtn.style.color = "#ec4899";
             }
         }
 
-        // Tombol < Sebelumnya dan Berikutnya >
         function changeSlide(direction) {
             currentIndex += direction;
-            // Kalo kelewat batas, putar balik
             if (currentIndex < 0) currentIndex = galleryData.length - 1;
             if (currentIndex >= galleryData.length) currentIndex = 0;
             updateGalleryDisplay();
         }
 
-        // Fungsi buat Jalan Pintas (Tombol Lihat Video / Lihat Foto)
         function toggleMedia() {
             const currentItem = galleryData[currentIndex];
-            
             if (currentItem.type === "image") {
-                // Kalo lagi di foto, cari index video pertama dan loncat ke sana
                 const videoIndex = galleryData.findIndex(item => item.type === "video");
                 if (videoIndex !== -1) {
                     currentIndex = videoIndex;
@@ -389,14 +403,22 @@
                     alert("Belum ada video yang dimasukin ke kodingan, bub!");
                 }
             } else {
-                // Kalo lagi di video, balik ke slide 1 (index 0)
                 currentIndex = 0;
                 updateGalleryDisplay();
             }
         }
 
+        // FUNGSI CETAK FOTO
         function printPhoto() {
-            alert("Fitur cetak foto belum siap, tunggu update dari ayang ya! 😋📸");
+            const currentItem = galleryData[currentIndex];
+            
+            // Cek kalau user nyoba nge-print video
+            if (currentItem.type === "video") {
+                alert("Video nggak bisa dicetak bub, coba geser ke foto dulu ya! 🎥❌");
+            } else {
+                // Kalau foto, panggil fitur print bawaan browser
+                window.print();
+            }
         }
 
         window.addEventListener('DOMContentLoaded', () => { updateGalleryDisplay(); });
