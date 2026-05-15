@@ -123,3 +123,181 @@
         .play-btn-large { background: var(--accent); color: white; border: none; width: 65px; height: 65px; border-radius: 50%; font-size: 24px; cursor: pointer; box-shadow: 0 4px 15px rgba(244, 114, 182, 0.4); display: flex; align-items: center; justify-content: center; margin: 0 auto; transition: 0.3s; }
         .play-btn-large:hover { transform: scale(1.1); background: #ec4899; }
         .progress-container { width: 100%; height: 8px; background: #ffe4e1; border-radius: 5px; margin: 20px 0 10px 0; overflow: hidden; }
+        .progress-bar-fill { height: 100%; width: 0%; background: var(--accent); border-radius: 5px; transition: width 0.1s linear; }
+        .time-info { display: flex; justify-content: space-between; font-size: 12px; color: #9ca3af; font-weight: 600; }
+
+        /* --- Transisi --- */
+        .hidden { display: none !important; }
+        .fade-in { animation: fadeIn 0.8s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+    <audio id="bg-music" loop>
+        <source src="https://www.chosic.com/wp-content/uploads/2021/04/Happy-Birthday-To-You-Retro-Gaming-Version.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="sidebar">
+        <button class="side-btn" id="nav-msg" onclick="showSection('message')" title="Pesan">💌</button>
+        <button class="side-btn" id="nav-music" onclick="showSection('music')" title="Pemutar Musik">🎵</button>
+        <button class="side-btn" id="nav-cake" onclick="showSection('cake')" title="Kue Ulang Tahun">🎂</button>
+        <button class="side-btn" id="nav-gal" onclick="showSection('gallery')" title="Galeri">📸</button>
+        <button class="side-btn" id="nav-wish" onclick="showSection('wish')" title="Harapan">🌟</button>
+    </div>
+
+    <div class="main-content">
+        <div class="glass-card fade-in" id="main-card">
+            
+            <div id="section-msg" class="fade-in">
+                <h1 style="font-size: 38px;">Happy Birthday! ✨</h1>
+                <h2 style="font-family: 'Quicksand'; color: var(--text-color); font-size: 20px; margin-top: 0;">Pesan Spesial Buat Kamu 💌</h2>
+                <p style="line-height: 1.6; font-size: 16px; margin-top: 20px;">
+                    Cuma mau bilang, makasih ya udah lahir ke dunia ini dan jadi bagian terbaik dari hidupku. You mean the world to me! ❤️
+                </p>
+                <p style="color: var(--accent); font-weight: bold; margin-top: 30px; font-size: 14px;">
+                    Psst.. Coba klik ikon musik (🎵) atau langsung ke kue (🎂) di menu navigasi!
+                </p>
+            </div>
+
+            <div id="section-music" class="hidden fade-in">
+                <h2 style="font-family: 'Pacifico'; color: var(--accent); font-size: 28px; margin-top: 0;">Our Soundtrack 🎧</h2>
+                <div class="music-player-card">
+                    <div class="track-title">Lagu Spesial Buat Kamu</div>
+                    <div class="track-artist">Dengerin ya sayang ✨</div>
+                    
+                    <button class="play-btn-large" id="play-btn-ui" onclick="toggleMusic()">▶</button>
+                    
+                    <div class="progress-container">
+                        <div class="progress-bar-fill" id="music-progress"></div>
+                    </div>
+                    <div class="time-info">
+                        <span id="current-time">0:00</span>
+                        <span>Full Track</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="section-cake" class="hidden">
+                <h2 style="font-family: 'Pacifico'; color: var(--accent); font-size: 28px; margin-top: 0;">Make a Wish! 🎂</h2>
+                
+                <div class="cake-container">
+                    <div class="plate"></div>
+                    <div class="cake">
+                        <div class="icing"></div>
+                        <div class="drip d1"></div>
+                        <div class="drip d2"></div>
+                        <div class="drip d3"></div>
+                        <div class="drip d4"></div>
+                        <div class="drip d5"></div>
+                        <div class="drip d6"></div>
+                        
+                        <div class="candle-wrapper">
+                            <div class="wick"></div>
+                            <div class="candle-body"></div>
+                            <div class="flame" id="lilin-api"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <p id="teks-instruksi">Ada kejutan kecil buat kamu. <br>Coba tiup lilinnya ya!</p>
+                
+                <div class="btn-group">
+                    <button class="action-btn" id="btn-tiup" onclick="tiupLilin()">Tiup Lilin 💨</button>
+                    <button class="action-btn relight hidden" id="btn-nyala" onclick="nyalainLilin()">Nyalain Lagi 🔥</button>
+                </div>
+            </div>
+
+            <div id="section-after-blow" class="hidden fade-in" style="margin-top: 10px;">
+                <h2 style="color: var(--accent); font-family: 'Pacifico', cursive; font-size: 28px;">Yeay! HBD Sayang! 🎉</h2>
+                <p style="line-height: 1.6; font-size: 15px;">Selamat ulang tahun ya! Semoga hari-harimu selalu seindah kue ini, makin dewasa, bahagia terus sama aku, dan semua yang kamu harapkan bisa terwujud. I Love You so much! ❤️</p>
+            </div>
+
+            <div id="section-gal" class="hidden fade-in">
+                <h2 style="font-family: 'Pacifico'; color: var(--accent);">Our Memories 📸</h2>
+                <p style="color: #9ca3af; font-size: 14px;">(Tempatin foto-foto lucu kalian di sini ya bub)</p>
+            </div>
+            
+            <div id="section-wish" class="hidden fade-in">
+                <h2 style="font-family: 'Pacifico'; color: var(--accent);">My Wish 🌟</h2>
+                <p>Semoga kita bisa merayakan ulang tahun kamu yang berikutnya, dan berikutnya, dan berikutnya lagi sama-sama. 💍</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // LOGIKA PEMUTAR MUSIK
+        const audio = document.getElementById("bg-music");
+        const playBtnUI = document.getElementById("play-btn-ui");
+        const progressFill = document.getElementById("music-progress");
+        const currentTimeText = document.getElementById("current-time");
+        let isPlaying = false;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                audio.pause();
+                playBtnUI.innerHTML = "▶"; // Simbol Play
+                isPlaying = false;
+            } else {
+                audio.play();
+                playBtnUI.innerHTML = "⏸"; // Simbol Pause
+                isPlaying = true;
+            }
+        }
+
+        // Update progress bar musik
+        audio.addEventListener('timeupdate', () => {
+            if(audio.duration) {
+                const progressPercent = (audio.currentTime / audio.duration) * 100;
+                progressFill.style.width = progressPercent + "%";
+                
+                // Format waktu (menit:detik)
+                let currentMins = Math.floor(audio.currentTime / 60);
+                let currentSecs = Math.floor(audio.currentTime - currentMins * 60);
+                if(currentSecs < 10) { currentSecs = "0" + currentSecs; }
+                currentTimeText.innerHTML = currentMins + ":" + currentSecs;
+            }
+        });
+
+        // LOGIKA KUE
+        function tiupLilin() {
+            document.getElementById('lilin-api').classList.add('hidden');
+            document.getElementById('btn-tiup').classList.add('hidden');
+            document.getElementById('btn-nyala').classList.remove('hidden');
+            document.getElementById('teks-instruksi').innerHTML = "Yeeay! Semoga doanya terkabul! 💖";
+            document.getElementById('section-after-blow').classList.remove('hidden');
+        }
+
+        function nyalainLilin() {
+            document.getElementById('lilin-api').classList.remove('hidden');
+            document.getElementById('btn-nyala').classList.add('hidden');
+            document.getElementById('btn-tiup').classList.remove('hidden');
+            document.getElementById('teks-instruksi').innerHTML = "Ada kejutan kecil buat kamu. <br>Coba tiup lilinnya ya!";
+            document.getElementById('section-after-blow').classList.add('hidden');
+        }
+
+        // LOGIKA NAVIGASI MENU
+        function showSection(name) {
+            // Sembunyikan semuanya
+            document.getElementById('section-msg').classList.add('hidden');
+            document.getElementById('section-music').classList.add('hidden');
+            document.getElementById('section-cake').classList.add('hidden');
+            document.getElementById('section-after-blow').classList.add('hidden');
+            document.getElementById('section-gal').classList.add('hidden');
+            document.getElementById('section-wish').classList.add('hidden');
+
+            // Tampilkan yang dipencet
+            if(name === 'message') document.getElementById('section-msg').classList.remove('hidden');
+            if(name === 'music') document.getElementById('section-music').classList.remove('hidden');
+            if(name === 'cake') {
+                document.getElementById('section-cake').classList.remove('hidden');
+                if(document.getElementById('btn-tiup').classList.contains('hidden')) {
+                    document.getElementById('section-after-blow').classList.remove('hidden');
+                }
+            }
+            if(name === 'gallery') document.getElementById('section-gal').classList.remove('hidden');
+            if(name === 'wish') document.getElementById('section-wish').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
