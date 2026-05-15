@@ -24,7 +24,7 @@
             background-size: 20px 20px; 
         }
 
-        /* --- Navigasi (Responsif) --- */
+        /* --- Navigasi Samping (Responsif) --- */
         .sidebar {
             position: fixed; left: 15px; top: 50%;
             transform: translateY(-50%);
@@ -43,11 +43,8 @@
             display: flex; align-items: center; justify-content: center;
         }
 
-        .side-btn:hover, .side-btn.active-btn { 
-            background: var(--accent); color: white; transform: scale(1.1) translateY(-2px); 
-        }
+        .side-btn:hover { background: var(--accent); color: white; transform: scale(1.1) translateY(-2px); }
 
-        /* --- Khusus Tampilan HP (Mobile) --- */
         @media (max-width: 768px) {
             .sidebar {
                 left: 50%; top: auto; bottom: 20px;
@@ -64,12 +61,11 @@
             h1 { font-size: 28px !important; }
         }
 
-        /* --- Kontainer Utama --- */
+        /* --- Kontainer Utama (Glassmorphism) --- */
         .main-content {
             display: flex; flex-direction: column;
             align-items: center; justify-content: center;
-            min-height: 100vh; padding: 20px;
-            text-align: center;
+            min-height: 100vh; padding: 20px; text-align: center;
         }
 
         .glass-card {
@@ -77,8 +73,7 @@
             backdrop-filter: blur(12px);
             padding: 40px; border-radius: 30px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.05), border: 1px solid rgba(255,255,255,0.5);
-            max-width: 450px; width: 100%;
-            position: relative;
+            max-width: 450px; width: 100%; position: relative;
         }
 
         h1 { font-family: 'Pacifico', cursive; color: var(--accent); margin-bottom: 5px; font-size: 32px; text-shadow: 2px 2px 4px rgba(244, 114, 182, 0.2); }
@@ -101,19 +96,12 @@
         .cake { width: 170px; height: 110px; background: #fff4e6; border-radius: 15px 15px 10px 10px; position: relative; box-shadow: inset -10px -10px 20px rgba(0,0,0,0.03), 0 8px 15px rgba(0,0,0,0.05); }
         .icing { position: absolute; top: 0; left: 0; width: 100%; height: 45px; background: #ffb8c6; border-radius: 15px 15px 0 0; }
         .drip { position: absolute; background: #ffb8c6; border-radius: 0 0 20px 20px; box-shadow: 2px 2px 5px rgba(0,0,0,0.02); }
-        .d1 { width: 30px; height: 25px; left: 5px; top: 40px; }
-        .d2 { width: 35px; height: 45px; left: 30px; top: 40px; }
-        .d3 { width: 30px; height: 15px; left: 60px; top: 40px; }
-        .d4 { width: 45px; height: 35px; left: 85px; top: 40px; }
-        .d5 { width: 30px; height: 20px; left: 125px; top: 40px; }
-        .d6 { width: 15px; height: 10px; left: 150px; top: 40px; border-radius: 0 0 10px 10px;}
-
+        .d1 { width: 30px; height: 25px; left: 5px; top: 40px; } .d2 { width: 35px; height: 45px; left: 30px; top: 40px; } .d3 { width: 30px; height: 15px; left: 60px; top: 40px; } .d4 { width: 45px; height: 35px; left: 85px; top: 40px; } .d5 { width: 30px; height: 20px; left: 125px; top: 40px; } .d6 { width: 15px; height: 10px; left: 150px; top: 40px; border-radius: 0 0 10px 10px;}
         .candle-wrapper { position: absolute; top: -65px; left: 50%; transform: translateX(-50%); width: 20px; z-index: 5; }
         .candle-body { width: 14px; height: 55px; background: repeating-linear-gradient(-45deg, #ffffff, #ffffff 6px, #ff9ff3 6px, #ff9ff3 12px); border-radius: 6px; position: absolute; left: 3px; box-shadow: 2px 2px 5px rgba(0,0,0,0.08); border: 1px solid rgba(255,255,255,0.8); }
         .wick { width: 3px; height: 12px; background: #555; position: absolute; top: -10px; left: 8.5px; border-radius: 2px; }
-        .flame { width: 18px; height: 30px; background-color: var(--flame-inner); border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%; position: absolute; top: -38px; left: 1px; box-shadow: 0 0 15px var(--flame-inner), 0 0 25px var(--flame-outer), 0 0 45px var(--flame-outer); transform-origin: bottom center; animation: flicker 0.3s ease-in-out infinite alternate; filter: blur(0.5px); }
+        .flame { width: 18px; height: 30px; background-color: var(--flame-inner); border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%; position: absolute; top: -38px; left: 1px; box-shadow: 0 0 15px var(--flame-inner), 0 0 25px var(--flame-outer), 0 0 45px var(--flame-outer); transform-origin: bottom center; animation: flicker 0.3s ease-in-out infinite alternate; }
         .flame::after { content: ''; width: 8px; height: 18px; background: rgba(255, 255, 255, 0.9); border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%; position: absolute; bottom: 3px; left: 5px; }
-
         @keyframes flicker { 0% { transform: rotate(-2deg) scaleY(1.0); opacity: 0.9; } 25% { transform: rotate(1deg) scaleY(1.05); opacity: 1; } 50% { transform: rotate(-1deg) scaleY(0.95); opacity: 0.95; } 75% { transform: rotate(2deg) scaleY(1.02); opacity: 1; } 100% { transform: rotate(-1deg) scaleY(1.0); opacity: 0.9; } }
 
         /* --- MUSIC PLAYER ESTETIK --- */
@@ -122,9 +110,37 @@
         .track-artist { font-size: 14px; color: #6b7280; margin-bottom: 20px; }
         .play-btn-large { background: var(--accent); color: white; border: none; width: 65px; height: 65px; border-radius: 50%; font-size: 24px; cursor: pointer; box-shadow: 0 4px 15px rgba(244, 114, 182, 0.4); display: flex; align-items: center; justify-content: center; margin: 0 auto; transition: 0.3s; }
         .play-btn-large:hover { transform: scale(1.1); background: #ec4899; }
-        .progress-container { width: 100%; height: 8px; background: #ffe4e1; border-radius: 5px; margin: 20px 0 10px 0; overflow: hidden; cursor: pointer; }
-        .progress-bar-fill { height: 100%; width: 0%; background: var(--accent); border-radius: 5px; transition: width 0.1s linear; }
-        .time-info { display: flex; justify-content: space-between; font-size: 12px; color: #9ca3af; font-weight: 600; }
+        .progress-container { width: 100%; height: 8px; background: #ffe4e1; border-radius: 5px; margin: 20px 0 10px 0; overflow: hidden; cursor: pointer; } /* cursor pointer ditambahkan */
+        .progress-bar-fill { height: 100%; width: 0%; background: var(--accent); border-radius: 5px; transition: width 0.1s linear; pointer-events: none; }
+        .time-info { display: flex; justify-content: space-between; font-size: 12px; color: #9ca3af; font-weight: 600; pointer-events: none; }
+
+        /* --- GALLERY VIEWER ESTETIK --- */
+        .gallery-container { position: relative; margin-top: 20px; }
+        .gallery-count {
+            position: absolute; top: -15px; right: 10px; background: var(--accent); color: white; 
+            padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 14px; 
+            box-shadow: 0 4px 10px rgba(244, 114, 182, 0.3); z-index: 10;
+        }
+        .polaroid {
+            background: white; padding: 15px 15px 25px 15px; border-radius: 12px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08); transform: rotate(-2deg); 
+            transition: 0.3s ease; margin: 0 auto 20px; max-width: 260px;
+        }
+        .polaroid:hover { transform: rotate(0deg) scale(1.02); box-shadow: 0 15px 30px rgba(0,0,0,0.12); }
+        .polaroid img { width: 100%; height: 220px; object-fit: cover; border-radius: 8px; border: 1px solid #f3f4f6; }
+        .polaroid-text { font-family: 'Quicksand', sans-serif; font-weight: 600; color: #4b5563; margin-top: 15px; font-size: 15px; }
+        
+        .gallery-controls { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+        .gallery-btn { 
+            background: white; color: var(--accent); border: 2px solid var(--accent); 
+            padding: 8px 15px; border-radius: 20px; font-weight: bold; cursor: pointer; 
+            transition: 0.3s; font-size: 13px; font-family: 'Quicksand'; box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .gallery-btn:hover { background: var(--accent); color: white; transform: translateY(-2px); }
+
+        /* Video Area */
+        #video-display { background: black; padding: 10px; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        #video-display video { border-radius: 8px; width: 100%; max-height: 250px; }
 
         /* --- Transisi --- */
         .hidden { display: none !important; }
@@ -139,11 +155,11 @@
     </audio>
 
     <div class="sidebar">
-        <button class="side-btn" id="nav-msg" onclick="showSection('message')" title="Pesan">💌</button>
-        <button class="side-btn" id="nav-music" onclick="showSection('music')" title="Pemutar Musik">🎵</button>
-        <button class="side-btn" id="nav-cake" onclick="showSection('cake')" title="Kue Ulang Tahun">🎂</button>
-        <button class="side-btn" id="nav-gal" onclick="showSection('gallery')" title="Galeri">📸</button>
-        <button class="side-btn" id="nav-wish" onclick="showSection('wish')" title="Harapan">🌟</button>
+        <button class="side-btn" onclick="showSection('message')" title="Pesan">💌</button>
+        <button class="side-btn" onclick="showSection('music')" title="Pemutar Musik">🎵</button>
+        <button class="side-btn" onclick="showSection('cake')" title="Kue Ulang Tahun">🎂</button>
+        <button class="side-btn" onclick="showSection('gallery')" title="Galeri Viewer">📸</button>
+        <button class="side-btn" onclick="showSection('wish')" title="Harapan">🌟</button>
     </div>
 
     <div class="main-content">
@@ -156,19 +172,19 @@
                     Cuma mau bilang, makasih ya udah lahir ke dunia ini dan jadi bagian terbaik dari hidupku. You mean the world to me! ❤️
                 </p>
                 <p style="color: var(--accent); font-weight: bold; margin-top: 30px; font-size: 14px;">
-                    Psst.. Coba klik ikon musik (🎵) atau langsung ke kue (🎂) di menu navigasi!
+                    Psst.. Coba buka satu-satu menu di samping kiri ya!
                 </p>
             </div>
 
             <div id="section-music" class="hidden fade-in">
                 <h2 style="font-family: 'Pacifico'; color: var(--accent); font-size: 28px; margin-top: 0;">Our Soundtrack 🎧</h2>
                 <div class="music-player-card">
-                    <div class="track-title">Lagu Spesial Buat Kamu</div>
+                    <div class="track-title">Lagu Spesial Buat Kita</div>
                     <div class="track-artist">Dengerin ya sayang ✨</div>
                     
                     <button class="play-btn-large" id="play-btn-ui" onclick="toggleMusic()">▶</button>
                     
-                   <div class="progress-container" id="progress-container" onclick="seekMusic(event)">
+                    <div class="progress-container" id="progress-container" onclick="seekMusic(event)">
                         <div class="progress-bar-fill" id="music-progress"></div>
                     </div>
                     <div class="time-info">
@@ -185,12 +201,8 @@
                     <div class="plate"></div>
                     <div class="cake">
                         <div class="icing"></div>
-                        <div class="drip d1"></div>
-                        <div class="drip d2"></div>
-                        <div class="drip d3"></div>
-                        <div class="drip d4"></div>
-                        <div class="drip d5"></div>
-                        <div class="drip d6"></div>
+                        <div class="drip d1"></div> <div class="drip d2"></div> <div class="drip d3"></div>
+                        <div class="drip d4"></div> <div class="drip d5"></div> <div class="drip d6"></div>
                         
                         <div class="candle-wrapper">
                             <div class="wick"></div>
@@ -210,23 +222,48 @@
 
             <div id="section-after-blow" class="hidden fade-in" style="margin-top: 10px;">
                 <h2 style="color: var(--accent); font-family: 'Pacifico', cursive; font-size: 28px;">Yeay! HBD Sayang! 🎉</h2>
-                <p style="line-height: 1.6; font-size: 15px;">Selamat ulang tahun ya! Semoga hari-harimu selalu seindah kue ini, makin dewasa, bahagia terus sama aku, dan semua yang kamu harapkan bisa terwujud. I Love You so much! ❤️</p>
+                <p style="line-height: 1.6; font-size: 15px;">Selamat ulang tahun ya! Semoga hari-harimu selalu seindah kue ini, makin dewasa, bahagia terus sama aku. I Love You so much! ❤️</p>
             </div>
 
             <div id="section-gal" class="hidden fade-in">
-                <h2 style="font-family: 'Pacifico'; color: var(--accent);">Our Memories 📸</h2>
-                <p style="color: #9ca3af; font-size: 14px;">(Tempatin foto-foto lucu kalian di sini ya bub)</p>
+                <h2 style="font-family: 'Pacifico'; color: var(--accent); margin-top: 0;">Our Memories 📸</h2>
+                
+                <div class="gallery-container">
+                    <div class="gallery-count" id="photo-count">1/4</div>
+
+                    <div class="polaroid" id="gallery-display-polaroid">
+                        <img src="" id="current-photo-img" alt="Memory">
+                        <div class="polaroid-text" id="current-photo-text">Memuat...</div>
+                    </div>
+
+                    <div id="video-display" class="hidden fade-in">
+                        <video id="gallery-video" controls>
+                            <source src="" type="video/mp4">
+                        </video>
+                        <br>
+                        <button class="gallery-btn" onclick="hideVideo()" style="margin-top: 10px; background: var(--accent); color: white;">Kembali ke Foto</button>
+                    </div>
+
+                    <div class="gallery-controls">
+                        <button class="gallery-btn" onclick="changePhoto(-1)">&lt; Sebelumnya</button>
+                        <button class="gallery-btn" onclick="changePhoto(1)">Berikutnya &gt;</button>
+                        <button class="gallery-btn" id="btn-play-video" onclick="playVideo()" style="border-color: #3b82f6; color: #3b82f6;">Lihat Video</button>
+                        <button class="gallery-btn" onclick="printPhoto()">Cetak</button>
+                    </div>
+                </div>
             </div>
             
             <div id="section-wish" class="hidden fade-in">
                 <h2 style="font-family: 'Pacifico'; color: var(--accent);">My Wish 🌟</h2>
-                <p>Semoga kita bisa merayakan ulang tahun kamu yang berikutnya, dan berikutnya, dan berikutnya lagi sama-sama. 💍</p>
+                <p>Semoga kita bisa merayakan ulang tahun kamu yang berikutnya, dan berikutnya lagi sama-sama. 💍</p>
             </div>
         </div>
     </div>
 
     <script>
-        // LOGIKA PEMUTAR MUSIK
+        // ==========================================
+        // 1. LOGIKA PEMUTAR MUSIK
+        // ==========================================
         const audio = document.getElementById("bg-music");
         const playBtnUI = document.getElementById("play-btn-ui");
         const progressFill = document.getElementById("music-progress");
@@ -236,22 +273,19 @@
         function toggleMusic() {
             if (isPlaying) {
                 audio.pause();
-                playBtnUI.innerHTML = "▶"; // Simbol Play
+                playBtnUI.innerHTML = "▶"; 
                 isPlaying = false;
             } else {
                 audio.play();
-                playBtnUI.innerHTML = "⏸"; // Simbol Pause
+                playBtnUI.innerHTML = "⏸"; 
                 isPlaying = true;
             }
         }
 
-        // Update progress bar musik
         audio.addEventListener('timeupdate', () => {
             if(audio.duration) {
                 const progressPercent = (audio.currentTime / audio.duration) * 100;
                 progressFill.style.width = progressPercent + "%";
-                
-                // Format waktu (menit:detik)
                 let currentMins = Math.floor(audio.currentTime / 60);
                 let currentSecs = Math.floor(audio.currentTime - currentMins * 60);
                 if(currentSecs < 10) { currentSecs = "0" + currentSecs; }
@@ -259,21 +293,18 @@
             }
         });
 
-        // FUNGSI BUAT GESER MENIT LAGU
+        // FUNGSI BUAT GESER MENIT LAGU (yang tadi kamu minta bub)
         function seekMusic(event) {
             const container = document.getElementById("progress-container");
-            // Ngambil lebar total garisnya
             const width = container.clientWidth;
-            // Ngambil titik klik kita (koordinat X)
             const clickX = event.offsetX;
-            // Ngambil total durasi lagunya
             const duration = audio.duration;
-            
-            // Mengubah menit lagu sesuai posisi klik
             audio.currentTime = (clickX / width) * duration;
         }
 
-        // LOGIKA KUE
+        // ==========================================
+        // 2. LOGIKA KUE
+        // ==========================================
         function tiupLilin() {
             document.getElementById('lilin-api').classList.add('hidden');
             document.getElementById('btn-tiup').classList.add('hidden');
@@ -290,9 +321,94 @@
             document.getElementById('section-after-blow').classList.add('hidden');
         }
 
-        // LOGIKA NAVIGASI MENU
+        // ==========================================
+        // 3. LOGIKA GALLERY VIEWER ESTETIK
+        // ==========================================
+        
+        // Data Galeri (Masukin foto/video kamu di sini bub)
+        const galleryData = [
+            {
+                img: "https://via.placeholder.com/400x400/ffb6c1/ffffff?text=Foto+1", // Ganti URL foto
+                text: "Semoga...",
+                video: "video-kamu-1.mp4" // Ganti URL Video kalau ada
+            },
+            {
+                img: "https://via.placeholder.com/400x400/f472b6/ffffff?text=Foto+2",
+                text: "Bahagia selalu yaa...",
+                // Slide ini gak ada video, jadi tombol Lihat Video ga bisa dipencet
+            },
+            {
+                img: "https://via.placeholder.com/400x400/fbcfe8/4b5563?text=Foto+3",
+                text: "Love you to the moon!",
+                video: "video-kamu-2.mp4"
+            }
+        ];
+
+        let currentPhotoIndex = 0;
+
+        function updateGalleryDisplay() {
+            const currentItem = galleryData[currentPhotoIndex];
+            document.getElementById('current-photo-img').src = currentItem.img;
+            document.getElementById('current-photo-text').innerHTML = currentItem.text;
+            document.getElementById('photo-count').innerHTML = (currentPhotoIndex + 1) + "/" + galleryData.length;
+
+            const videoBtn = document.getElementById('btn-play-video');
+            if (currentItem.video) {
+                videoBtn.style.opacity = "1";
+                videoBtn.style.cursor = "pointer";
+            } else {
+                videoBtn.style.opacity = "0.5";
+                videoBtn.style.cursor = "not-allowed";
+            }
+        }
+
+        function changePhoto(direction) {
+            hideVideo(); // Kalo lagi play video, balik ke foto dulu
+            let nextIndex = currentPhotoIndex + direction;
+            if (nextIndex < 0) nextIndex = galleryData.length - 1;
+            else if (nextIndex >= galleryData.length) nextIndex = 0;
+            currentPhotoIndex = nextIndex;
+            updateGalleryDisplay();
+        }
+
+        function playVideo() {
+            const currentItem = galleryData[currentPhotoIndex];
+            if (currentItem.video) {
+                document.getElementById('gallery-display-polaroid').classList.add('hidden');
+                document.getElementById('video-display').classList.remove('hidden');
+                
+                const videoEl = document.getElementById('gallery-video');
+                videoEl.querySelector('source').src = currentItem.video;
+                videoEl.load();
+                videoEl.play();
+                
+                // Pause musik background pas nonton video
+                if(isPlaying) toggleMusic(); 
+            } else {
+                alert("Nggak ada video untuk foto ini sayang 😊");
+            }
+        }
+
+        function hideVideo() {
+            const videoEl = document.getElementById('gallery-video');
+            videoEl.pause();
+            document.getElementById('gallery-display-polaroid').classList.remove('hidden');
+            document.getElementById('video-display').classList.add('hidden');
+        }
+
+        function printPhoto() {
+            alert("Fitur cetak foto belum siap, tunggu update dari ayang ya! 😋📸");
+        }
+
+        // Initialize Gallery pas halaman dimuat
+        window.addEventListener('DOMContentLoaded', () => {
+            updateGalleryDisplay();
+        });
+
+        // ==========================================
+        // 4. LOGIKA NAVIGASI MENU SAMPING
+        // ==========================================
         function showSection(name) {
-            // Sembunyikan semuanya
             document.getElementById('section-msg').classList.add('hidden');
             document.getElementById('section-music').classList.add('hidden');
             document.getElementById('section-cake').classList.add('hidden');
@@ -300,7 +416,6 @@
             document.getElementById('section-gal').classList.add('hidden');
             document.getElementById('section-wish').classList.add('hidden');
 
-            // Tampilkan yang dipencet
             if(name === 'message') document.getElementById('section-msg').classList.remove('hidden');
             if(name === 'music') document.getElementById('section-music').classList.remove('hidden');
             if(name === 'cake') {
