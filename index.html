@@ -208,30 +208,28 @@
         <source src="Play-ini-yaaa.mp3" type="audio/mpeg">
     </audio>
 
-
-
     <div class="sidebar">
         <button class="side-btn" onclick="showSection('message')" title="Pesan">💌</button>
         <button class="side-btn" onclick="showSection('music')" title="Pemutar Musik">🎵</button>
         <button class="side-btn" onclick="showSection('cake')" title="Kue Ulang Tahun">🎂</button>
-        <button class="side-btn" onclick="showSection('gallery')" title="Galeri Viewer">📸</button>
         <button class="side-btn" onclick="showSection('wish')" title="Harapan">🌟</button>
+        <button class="side-btn" onclick="showSection('gallery')" title="Galeri Viewer">📸</button>
     </div>
 
     <div class="main-content">
         <div class="glass-card fade-in" id="main-card">
 
-            <!-- PESAN -->
             <div id="section-msg" class="fade-in">
-                <h1 style="font-size:35px">Happy Birthday Sayang! ✨</h1>
+                <h1 style="font-size: clamp(22px, 6vw, 32px); white-space: nowrap; margin-bottom: 10px;">Happy Birthday Sayang! ✨</h1>
                 <h2 style="font-family:'Quicksand';color:var(--text-color);font-size:20px;margin-top:0">Pesan Spesial Buat Ama 💌</h2>
-                <p style="line-height:1.6;font-size:16px;margin-top:20px">awan mau bilang, makasih ya udah lahir ke dunia ini dan jadi bagian terbaik dari hidup awan. You mean the world to me!. Jangan pernah bosen ngadepin awan byy ❤️</p>
+                <p style="line-height:1.6;font-size:16px;margin-top:20px">
+                    awan mau bilang, makasih ya udah lahir ke dunia ini dan jadi bagian terbaik dari hidup awan. You mean the world to <span style="white-space: nowrap;">me! ❤️</span>
+                </p>
                 <p style="color:var(--accent);font-weight:bold;margin-top:30px;font-size:14px">
                     bibubbb...Coba buka satu-satu menu selanjutnya yaaa!
                 </p>
             </div>
 
-            <!-- MUSIK -->
             <div id="section-music" class="hidden fade-in">
                 <h2 style="font-family:'Pacifico';color:var(--accent);font-size:28px;margin-top:0">Our Soundtrack 🎧</h2>
                 <div class="music-player-card">
@@ -248,7 +246,6 @@
                 </div>
             </div>
 
-            <!-- KUE -->
             <div id="section-cake" class="hidden">
                 <h2 style="font-family:'Pacifico';color:var(--accent);font-size:28px;margin-top:0">Make a Wish! 🎂</h2>
                 <div class="cake-container">
@@ -274,23 +271,24 @@
                 <p style="line-height:1.6;font-size:15px">Barakallah fii umriki bibubbb! Semoga hari-hari ama selalu seindah kue ini, makin dewasa, bahagia terus sama awan. I Love Youuu amaaa! ❤️</p>
             </div>
 
-            <!-- GALERI -->
+            <div id="section-wish" class="hidden fade-in">
+                <h2 style="font-family:'Pacifico';color:var(--accent)">My Wish 🌟</h2>
+                <p>Semoga kita bisa merayakan ulang tahun kamu yang berikutnya, dan berikutnya lagi sama-sama. 💍</p>
+            </div>
+
             <div id="section-gal" class="hidden fade-in">
                 <h2 style="font-family:'Pacifico';color:var(--accent);margin-top:0;margin-bottom:6px">Our Memories 📸</h2>
 
                 <div class="gallery-container">
                     <div class="gallery-count" id="photo-count">1 / 20</div>
 
-                    <!-- Thumbnail strip -->
                     <div class="thumb-strip" id="thumb-strip"></div>
 
-                    <!-- Tampilan foto (slide 1-19) -->
                     <div class="polaroid" id="gallery-photo-box">
                         <img src="" id="current-photo-img" class="photo-display" alt="Memory">
                         <div class="polaroid-text" id="current-photo-text">Memuat...</div>
                     </div>
 
-                    <!-- Tampilan video (slide 20) -->
                     <div class="video-slide hidden" id="gallery-video-box">
                         <video id="gallery-video" controls>
                             <source src="video1.mp4" type="video/mp4">
@@ -298,7 +296,6 @@
                         <div id="video-text" style="font-family:'Quicksand';font-weight:600;color:#e2e8f0;font-size:14px;margin-top:8px">Video spesial kita 🎥</div>
                     </div>
 
-                    <!-- Kontrol galeri -->
                     <div class="gallery-controls">
                         <button class="gallery-btn" onclick="changeSlide(-1)">← Prev</button>
                         <button class="gallery-btn" onclick="changeSlide(1)">Next →</button>
@@ -307,16 +304,10 @@
                 </div>
             </div>
 
-            <!-- HARAPAN -->
-            <div id="section-wish" class="hidden fade-in">
-                <h2 style="font-family:'Pacifico';color:var(--accent)">My Wish 🌟</h2>
-                <p>Semoga kita bisa merayakan ulang tahun kamu yang berikutnya, dan berikutnya lagi sama-sama. 💍</p>
-            </div>
-
         </div>
     </div>
 
-   <script>
+    <script>
         // ============================
         // MUSIK
         // ============================
@@ -443,7 +434,6 @@
                 img.src = item.file;
                 document.getElementById('current-photo-text').textContent = item.text;
                 
-                // MENGHENTIKAN VIDEO KALAU DIGESER KE FOTO
                 vid.pause();
 
             } else {
@@ -459,7 +449,6 @@
 
             buildThumbs();
 
-            // Scroll thumbnail aktif ke tengah
             const strip = document.getElementById('thumb-strip');
             const activeEl = strip.children[currentIndex];
             if (activeEl) {
@@ -496,8 +485,7 @@
         function showSection(name) {
             ['section-msg','section-music','section-cake','section-after-blow','section-gal','section-wish']
                 .forEach(id => document.getElementById(id).classList.add('hidden'));
-
-            // MENGHENTIKAN VIDEO KALAU PINDAH MENU
+            
             document.getElementById('gallery-video').pause();
 
             if (name === 'message') document.getElementById('section-msg').classList.remove('hidden');
@@ -520,14 +508,12 @@
 
             const galVideo = document.getElementById('gallery-video');
             
-            // Sensor pas video MUTER -> Pause lagu
             galVideo.addEventListener('play', () => {
                 if (isPlaying) {
                     audio.pause();
                 }
             });
 
-            // Sensor pas video BERHENTI (pause/tamat) -> Nyalain lagu lagi
             galVideo.addEventListener('pause', () => {
                 if (isPlaying) {
                     audio.play();
@@ -541,3 +527,5 @@
             });
         });
     </script>
+</body>
+</html>
