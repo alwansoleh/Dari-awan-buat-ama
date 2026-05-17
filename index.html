@@ -316,7 +316,7 @@
         </div>
     </div>
 
-    <script>
+   <script>
         // ============================
         // MUSIK
         // ============================
@@ -364,7 +364,7 @@
             document.getElementById('section-after-blow').classList.add('hidden');
         }
 
-     // ============================
+        // ============================
         // GALERI — DATA STATIC FILES
         // ============================
         const galleryData = [
@@ -411,7 +411,6 @@
                     el.src = item.file;
                     el.alt = 'Foto ' + (i + 1);
                     el.onerror = function() {
-                        // Kalau foto belum ada, tampilkan fallback div
                         var fb = document.createElement('div');
                         fb.className = 'thumb-empty' + (i === currentIndex ? ' active' : '');
                         fb.textContent = i + 1;
@@ -434,6 +433,7 @@
 
             const photoBox = document.getElementById('gallery-photo-box');
             const videoBox = document.getElementById('gallery-video-box');
+            const vid = document.getElementById('gallery-video');
 
             if (item.type === "image") {
                 photoBox.classList.remove('hidden');
@@ -442,12 +442,14 @@
                 const img = document.getElementById('current-photo-img');
                 img.src = item.file;
                 document.getElementById('current-photo-text').textContent = item.text;
+                
+                // MENGHENTIKAN VIDEO KALAU DIGESER KE FOTO
+                vid.pause();
 
             } else {
                 photoBox.classList.add('hidden');
                 videoBox.classList.remove('hidden');
 
-                const vid = document.getElementById('gallery-video');
                 if (!vid.src.endsWith(item.file)) {
                     vid.src = item.file;
                     vid.load();
@@ -495,6 +497,9 @@
             ['section-msg','section-music','section-cake','section-after-blow','section-gal','section-wish']
                 .forEach(id => document.getElementById(id).classList.add('hidden'));
 
+            // MENGHENTIKAN VIDEO KALAU PINDAH MENU
+            document.getElementById('gallery-video').pause();
+
             if (name === 'message') document.getElementById('section-msg').classList.remove('hidden');
             if (name === 'music') document.getElementById('section-music').classList.remove('hidden');
             if (name === 'cake') {
@@ -507,10 +512,32 @@
             if (name === 'wish') document.getElementById('section-wish').classList.remove('hidden');
         }
 
-        // Init
+        // ============================
+        // AWAL DIMUAT & LOGIKA AUDIO VS VIDEO
+        // ============================
         window.addEventListener('DOMContentLoaded', () => {
             updateGalleryDisplay();
+
+            const galVideo = document.getElementById('gallery-video');
+            
+            // Sensor pas video MUTER -> Pause lagu
+            galVideo.addEventListener('play', () => {
+                if (isPlaying) {
+                    audio.pause();
+                }
+            });
+
+            // Sensor pas video BERHENTI (pause/tamat) -> Nyalain lagu lagi
+            galVideo.addEventListener('pause', () => {
+                if (isPlaying) {
+                    audio.play();
+                }
+            });
+            
+            galVideo.addEventListener('ended', () => {
+                if (isPlaying) {
+                    audio.play();
+                }
+            });
         });
     </script>
-</body>
-</html>
